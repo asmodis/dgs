@@ -1,0 +1,263 @@
+
+\section{Lineare und Multilineare Algebra}
+\label{sec:mla}
+
+\textbf{Vereinbarung:} In diesem Abschnitt sei $\K=\R,\C$ (also ein
+vernünftiger Körper) und alle
+auftretenden Vektorräume (bis auf die frei erzeugten) seien
+endlichdimensionale $\K$-Vektorräume. Insbesondere sollen
+$V_1,\dots,V_n, U,V,W$ endlichdimensionale $\K$-Vektorräume bezeichnen
+
+\subsection{Vorbemerkungen (aka Erinnerungen an die Grundvorlesungen)}
+\label{sec:vbakaegv}
+
+Wir geben hier eine Sammlung von Begriffen und ihren Eigenschaften,
+die man kennen sollte.
+
+\begin{definition}
+  Sei $M$ eine nichtleere Menge. Versieht man die Menge
+  \begin{equation*}
+    F(M) := \set{f \colon M \to \K \mid \supp f\text{ endlich}}
+  \end{equation*}
+  mit der kanonischen Vektorraumstruktur für $\K$-wertige Abbildungen,
+  so heißt $F(M)$ der \emph{frei von $M$ erzeugte Vektorraum}.
+
+  Die kanonische Einbettung von $M$ in $F(M)$ bezeichnen wir mit
+  \begin{equation*}
+    \delta \colon M \to F(M),\, x \mapsto \delta_x
+  \end{equation*}
+  wobei $\delta_x(y) := 1$ falls $x=y$ und $0$ sonst.
+\end{definition}
+
+\begin{proposition}
+  Es gilt
+  \begin{statements}
+  \item Die Menge $\delta(M)$ bildet eine Basis von $F(M)$.
+  \item \textit{(Universelle Eigenschaft von $(F(M),\delta)$)} Ist
+    $f\colon M \to U$ eine Abbildung, so gibt es genau eine lineare
+    Abbildung $F\colon F(M) \to U$, sodass $f = F\circ\delta$.
+  \end{statements}
+\end{proposition}
+
+\begin{proposition}[Universelle Eigenschaft des Quotienten]
+  Sei $U$ ein Unterraum von $V$. Ist $f\colon
+  V \to W$ eine lineare Abbildung, sodass $U \subset \ker f$, dann
+  gibt es eine eindeutig bestimmte lineare Abbildung $F\colon V/U \to
+  W$, sodass $f = F\circ \pr$, wobei $\pr\colon V \to V/U$ die
+  kanonische Projektion bezeichnet.
+\end{proposition}
+
+\begin{definition}
+  Sei $b$ eine bilineare Abbildung $b\colon V\times W \to U$.
+
+  Man nennt $b$ \emph{nichtentartet}, falls
+  \begin{equation*}
+    \forall v\in V\colon b(v,w) = 0 \implies w=0\text{ und }
+    \forall w\in W\colon b(v,w) = 0 \implies v=0
+  \end{equation*}
+
+  Man nennt $b$ eine \emph{Paarung}, falls $U=\K$ und eine
+  nichtentartete Paarung heißt auch \emph{Dualität}.
+\end{definition}
+
+\begin{proposition}
+  Eine Dualität liefert je einen Isomorphismus $\Phi\colon V\to W^*$
+  und $\Psi\colon W\to V^*$.
+\end{proposition}
+
+\subsection{Tensorprodukt}
+\label{sec:tensor}
+
+\begin{definition}
+  Seien $V,W$ Vektorräume und bezeichne $I(V\times W)$ den von den Elementen
+  \begin{equation*}
+    \delta((\lambda v, w)) - \lambda \delta((v,w)),\, 
+    \delta((v, \lambda w)) - \lambda \delta((v,w)),\,
+    \delta((v + v', w)) - \delta((v,w)) -\delta((v',w)),\,
+    \delta((v, w + w')) - \delta((v,w)) -\delta((v,w'))
+  \end{equation*}
+  erzeugten Vektorunterraum von $F(V\times W)$, wobei $v,v'\in V$,
+  $w,w'\in W$ und $\lambda\in\K$. Dann ist das \emph{Tensorprodukt von
+    $V$ und $W$ über $\K$} definiert als
+  \begin{equation*}
+    V\tensor_\K W := V \tensor W := F(V\times W)/I(V\times W).
+  \end{equation*}
+
+  Wir bezeichnen mit $\tau\colon V\times W \to V\tensor W, \tau((v,w))
+  := v\tensor w := \pr\circ\delta((v,w))$ die kanonische Einbettung
+  von $V\times W$ in $V\tensor W$, wobei $\pr\colon F(V\times W) \to
+  F(V\times W)/I(V\times W)$ die kanonische Projektion ist.
+\end{definition}
+
+\begin{proposition}
+  Seien $U,V,W$ Vektorräume. Dann gilt
+  \begin{statements}
+  \item Die Abbildung $\tau$ ist bilinear.
+  \item Die Menge $\tau(V\times W)$ bildet ein Erzeugendensystem von
+    $V\tensor W$.
+  \item \textit{(Universelle Eigenschaft des Tensorprodukts)} Sei $b\in
+  \Mult(V,W;U)$. Dann gibt es eine eindeutig bestimmte lineare
+  Abbildung $B\colon V\tensor W \to U$, sodass $B\circ\tau = b$.
+  \end{statements}
+\end{proposition}
+
+\begin{proposition}
+  Seien $U,V,W$ Vektorräume und $b\in\Mult(V,W;U)$. Dann gilt
+  \begin{statements}
+  \item $V^*\tensor W \equiv \Hom(V,W)$. Insbesondere gilt $\dim
+    V\tensor W = \dim V \cdot \dim W$.
+  \item $V\tensor W \equiv W\tensor V$
+  \item $V\tensor\K \equiv V$
+  \item\label{tp:asso} $U\tensor(V\tensor W) \equiv (U\tensor V)\tensor W$
+  \item $U\tensor(V\oplus W) \equiv U\tensor V \oplus U\tensor W$
+  \end{statements}
+\end{proposition}
+
+\begin{bemerkung}
+  Aus \ref{tp:asso} folgt die Wohldefiniertheit (bis auf Isomorphie)
+  eines mehrfachen Tensorprodukts. Wir können festlegen, dass
+  \begin{equation*}
+    V_1\tensordots V_n := V_1\tensor (V_2\tensordots V_n).
+  \end{equation*}
+  Wir erhalten eine multilineare Abbildung
+  \begin{equation*}
+    \tilde\tau_n \colon V_1\dotted{\times}V_n \to
+    V_1\tensordots V_n, (v^1,\dots,v^n) \mapsto \tau(v^1,\tilde\tau_{n-1}(v^2,\dots, v^n))
+  \end{equation*}
+  die  wir im folgenden auch einfach mit $\tau$ bezeichnen. Es gilt
+  wie vorher auch, dass die Elemente $v^1\tensordots v^n :=
+  \tau(v^1,\dots,v^n)$ ein Erzeugendensystem bilden. Die
+  universelle Eigenschaft erweitert sich wie folgt:
+\end{bemerkung}
+\begin{proposition}[Universelle Eigenschaft des mehrfachen Tensorprodukts]
+  Seien $V_1,\dots,V_n,W$ Vektorräume und $m\in
+  \Mult(V_1,\dots,V_n;W)$. Dann gibt es eine eindeutig bestimmte
+  lineare Abbildung $M\colon V_1\tensordots V_n \to W$, sodass $m =
+  M\circ \tau$.
+\end{proposition}
+
+\begin{proposition}
+  Seien $V_1,\dots,V_n,W$ Vektorräume. Dann gilt
+  \begin{equation*}
+    (V_1\tensordots V_n)^* \equiv V_1^*\tensordots V_n^*
+  \end{equation*}
+  und
+  \begin{equation*}
+    V_1^*\tensordots V_n^*\tensor W \equiv \Mult(V_1,\dots,V_n;W)
+  \end{equation*}
+\end{proposition}
+
+
+\subsection{Tensoralgebra und äußere Algebra}
+\label{sec:tauv}
+
+\begin{definition}
+  Wir definieren
+  \begin{equation*}
+    T^0(V) := \K,\, T^n(V) := V\tensor T^{n-1}(V)\text{ und }
+    T^{(p,q)}(V) := T^p(V) \tensor T^q(V^*).
+  \end{equation*}
+  und identifizieren kanonisch $T^{(p,0)}(V)$ mit $T^p(V)$ und
+  $T^{(0,p)}(V)$ mit $T^p(V^*)$.
+  Es heißt
+  \begin{equation*}
+    T(V) := \bigoplus_{k\geq 0} T^k(V)
+  \end{equation*}
+  die \emph{Tensoralgebra von $V$} und
+  \begin{equation*}
+    \mathcal{T}(V) := \bigoplus_{p,q \geq 0} T^{(p,q)}(V)
+  \end{equation*}
+  die \emph{erweiterte Tensoralgebra von $V$}.
+
+  Wir definieren $\tensor\colon \mathcal{T}(V)\times \mathcal{T}(V)
+  \to \mathcal{T}(V)$ als die bilineare Abbildung, die eindeutig durch
+  \begin{equation*}
+    (v^1\tensordots v^k\tensor \nu_1\tensordots \nu_l,
+    w^1\tensordots w^p\tensor \mu_1\tensordots \mu_q) \mapsto
+    v^1\tensordots v^k\tensor w^1\tensordots w^p \tensor
+    \nu_1\tensordots \nu_l \tensor \mu_1 \tensordots \mu_q
+  \end{equation*}
+  bestimmt ist.
+\end{definition}
+
+\begin{proposition}
+  Die erweiterte Tensoralgebra ist eine $\Z$-graduierte kommutative $\K$-Algebra
+  mit $1$. Die Tensoralgebra ist eine $\Z$-graduierte Unteralgebra der
+  erweiterten Tensoralgebra.
+\end{proposition}
+
+\begin{definition}
+  Bezeichne $S_k$ die Menge der Permutationen der Menge
+  $\set{1,\dots,k}$. Eine Permutation $\sigma \in S_k$ induziert eine
+  lineare Abbildung $\sigma \colon T^k(V) \to T^k(V)$, die durch
+  \begin{equation*}
+    v^1\tensordots v^k \mapsto v^{\sigma(1)}\tensordots v^{\sigma(k)}
+  \end{equation*}
+  eindeutig definiert ist.
+
+  Wir definieren
+  \begin{equation*}
+    \Lambda^k(V) := \set{ t\in T^k(V) \mid \sigma(t) =
+      \sgn(\sigma)\cdot t }
+  \end{equation*}
+  die Menge der \emph{alternierenden Tensoren vom Grad $k$} und die
+  \emph{äußere Algebra von $V$} ist definiert als
+  \begin{equation*}
+    \Lambda(V) := \bigoplus_{k\geq 0}\Lambda^k(V)
+  \end{equation*}
+  
+
+  Weiters bezeichne
+  \begin{equation*}
+    \Alt_k \colon T^k(V) \to T^k(V), t \mapsto
+    \begin{cases}
+      \frac{1}{k!}\sum_{\sigma\in S_k} \sgn(\sigma) \sigma(t) & 0\leq
+      k \leq \dim V \\
+      0 & \sonst
+    \end{cases}
+  \end{equation*}
+  den (manchmal) sogenannten \emph{Alterator}.
+\end{definition}
+
+\begin{proposition}
+  Sei $\sigma \in S_k$ eine Permutation. Es gilt
+  \begin{statements}
+  \item $\sigma(\Alt_k(t)) = \Alt_k(\sigma(t)) =
+    \sgn(\sigma)\Alt_k(t)$.
+  \item $\Alt_k \colon T^k(V) \to \Lambda^k(V)$ ist eine surjektive
+    Projektion. Insbesondere sind also Elemente der Form
+    \begin{equation*}
+      v^1\dotted{\wedge} v^k := k!\Alt_k(v^1\tensordots v^k)
+    \end{equation*}
+    für $v^1,\dots,v^k\in V$ ein Erzeugendensystem für $\Lambda^k(V)$.
+  \item $\dim \Lambda^k(V) = \binom{\dim V}{k}$
+  \end{statements}
+\end{proposition}
+
+\begin{definition}
+  Wir definieren das \emph{äußere Produkt} als die bilineare Abbildung
+  $\Lambda(V\times \Lambda(V) \to \Lambda(V)$, die durch
+  \begin{equation*}
+    (v^1\wedgedots v^k) \wedge (w^1\wedgedots w^l) :=
+    \frac{(k+l)!}{k!l!}\Alt_{k+l}((v^1\wedgedots v^k) \tensor
+    (w^1\wedgedots w^l))
+  \end{equation*}
+  eindeutig bestimmt ist.
+\end{definition}
+
+\begin{proposition}
+  Es gilt
+  \begin{statements}
+  \item Das äußere Produkt ist assoziativ.
+  \item Das äußere Produkt ist ``superkommuativ'', das heißt für
+    $\omega \in \Lambda^k(V)$ und $\eta \in \Lambda^l(V)$ gilt
+    \begin{equation*}
+      \omega \wedge \eta = (-1)^{kl}\eta\wedge \omega
+    \end{equation*}
+  \end{statements}
+\end{proposition}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 
