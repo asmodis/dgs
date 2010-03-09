@@ -1,0 +1,345 @@
+
+\section{Grundlagen}
+\label{sec:basics}
+
+\subsection{Mannigfaltigkeiten}
+\label{sec:mfk}
+
+\begin{definition}
+  Sei $M$ eine nichtleere Menge und $m\in\N_0$. Ein Tupel $(U,\phi)$ heißt \emph{Karte auf
+    $M$}, falls
+  \begin{properties}
+  \item $U \subset M$,
+  \item $\phi\colon U \to \R^m$ eine injektive Abbildung ist und
+  \item $\phi(U)$ eine offene Teilmenge des $\R^m$ ist.
+  \end{properties}
+  Man nennt dann $U$ \emph{Kartengebiet} und $\phi$
+  \emph{Koordinatenabbildung} ($\phi^{-1}$ wird auch \emph{lokale
+  Parametrisierung} genannt). Ist $p\in U \subset M$, so sagt man
+auch, dass $(U,\phi)$ eine Karte \emph{um $p$} ist und falls $\phi(p)
+= 0$, so sagt man, dass $(U,\phi)$ eine \emph{um $p$ zentrierte} Karte ist. 
+
+  Eine Familie von Karten $A = \set{(U_i,\phi_i)}_{i\in  I}$ heißt
+  \emph{(glatter) Atlas auf $M$}, falls
+  \begin{properties}
+  \item $\exists m \in \N_0\ \forall i\in I\colon \phi_i(U_i) \subset \R^m$,
+  \item $\bigcup_{i\in I} U_i = M$,
+  \item $\phi_i(U_i\cap U_j), \phi_j(U_i\cap U_j)$ sind offen und
+  \item $\phi_i\circ \phi_j^{-1} \colon \phi_j(U_i\cap U_j) \to
+    \phi_i(U_i\cap U_j)$ ist $C^\infty$.
+  \end{properties}
+
+  Ein Atlas $A$ heißt \emph{maximal}, falls für jede Karte $(U,\phi)$,
+  für die $A\cup \set{(U,\phi)}$ ein glatter Atlas ist, bereits gilt, dass
+  $(U,\phi) \in A$. Ein maximaler glatter Atlas heißt auch
+  \emph{glatte Struktur}.
+
+  Ein Tupel $(M,D)$ heißt \emph{(glatte) Mannigfaltigkeit}, falls $D$
+  eine glatte Struktur ist. Eine Karte $(U,\phi)$ heißt \emph{zulässig},
+  falls $(U,\phi)\in D$. Die \emph{Dimension} $\dim M$ einer
+  Mannigfaltigkeit ist definiert als $\dim \phi(U)$ für eine zulässige
+  Karte (nach Definition eines Atlanten ist die Dimension wohldefiniert). 
+\end{definition}
+
+\begin{proposition}\label{prop:basic:atlasbestimmtstruktur}
+  Sei $A$ ein Atlas. Dann gibt es genau eine glatte Struktur $D$,
+  sodass $A\subseteq D$.
+
+  \textsc{Notation:} Für dieses $D$ schreiben wir auch $[A]$.
+\end{proposition}
+
+\begin{proposition}
+  Sei $(M,D)$  eine Mannigfaltigkeit und $p\in M$. Dann gibt es für
+  alle $0 < r \leq \infty$ eine zulässige um $p$ zentrierte Karte
+  $(U,\phi)$ mit $\phi(U) = B_r(0)$.
+\end{proposition}
+
+\begin{definition}
+  Sei $A$ ein Atlas. Die Initialtopologie bezüglich $A$ heißt
+  \emph{Atlastopologie}, in Zeichen $\tau(A)$. Ist $A$ maximal so heißt die Atlastopologie
+  auch \emph{Mannigfaltigkeitstopologie}.
+
+  Eine Mannigfaltigkeit $(M,D)$ ist immer mit der
+  Mannigfaltigkeitstopologie versehen.
+\end{definition}
+
+\begin{proposition}
+  Seien $A,B$ Atlanten, sodass $A\cup B$ wieder ein Atlas ist. Dann
+  gilt $\tau(A) = \tau(B)$. Insbesondere gilt also $\tau(A) =
+  \tau([A])$, die Mannigfaltigkeitstopologie wird also durch eine
+  geeignete Atlastopologie festgelegt.
+\end{proposition}
+
+\begin{proposition}
+  Sei $(M,D)$ eine Mannigfaltigkeit und $\tau$ eine Topologie auf
+  $M$. Dann gilt $\tau = \tau(D)$, falls für jede zulässige Karte
+  $(U,\phi)$ gilt, dass
+  \begin{properties}
+  \item $U$ eine offene Menge bezüglich $\tau$ ist und
+  \item $\phi \colon U \to \phi(U)$ ein Homeomorphismus bezüglich
+    $\tau$ ist.
+  \end{properties}
+\end{proposition}
+
+\begin{proposition}
+  Sei $(M,D)$ eine Mannigfaltigkeit. Dann hat $M$ abzählbare
+  Topologie, falls es einen abzählbaren Atlas $A$ mit $D=[A]$ gibt.
+
+  $M$ ist hausdorffsch, falls es für alle Punkte $p,q\in M$ entweder
+  eine zulässige Karte $(U,\phi)$ gibt mit $p,q\in U$ oder es zwei
+  zulässige Karten $(U,\phi),(V,\psi)$ gibt mit $p\in U$, $q\in V$ und
+  $U\cap V = \emptyset$.
+\end{proposition}
+
+\begin{proposition}
+  Sei $(M,D)$ eine Mannigfaltigkeit. Hat $M$ abzählbare Topologie und
+  ist hausdorffsch, so ist $M$ parakompakt.
+\end{proposition}
+
+\textbf{VEREINBARUNG:} Ab jetzt gilt immer, dass die
+Mannigfaltigkeitstopologie abzählbar und hausdorffsch ist. Wenn von
+Karten die Rede ist, sind immer zulässige Karten gemeint.
+
+Wir werden in Zukunft die glatte Struktur nicht mehr unbedingt mit
+angeben und erlauben uns, die Dimension einer Mannigfaltigkeit als
+Hochzahl anzugeben, das heißt $M^m$ bezeichnet eine Mannigfaltigkeit
+der Dimension $m$ (außer es ist aus dem Kontext klar, dass ein
+$m$-faches kartesisches Produkt gemeint ist).
+
+\subsection{Differenzierbare Abbildungen}
+\label{sec:diffabb}
+
+\begin{definition}
+  Seien $M,N$ Mannigfaltigkeiten, $O\subset M$ offen und
+  $p\in O$. Eine Abbildung $f\colon O \to N$
+  heißt \emph{$k$-fach differenzierbar in $p$} (man sagt auch
+  \emph{ist $C^k$ in $p$}), falls $f$ stetig ist und für alle Karten $(U,\phi)$ um $p$
+  und alle Karten $(V,\psi)$ um $f(p)$ gilt, dass $\psi\circ
+  f\circ\phi^{-1} \colon phi(U\cap f^{-1}(V)) \to \psi(f(U)\cap V)$
+  $C^k$ in $\phi(p)$ ist. Die Abbildung $f$ ist
+  \emph{$C^k$ auf $O$}, falls für alle $p\in O$ gilt, dass $f$ $C^k$
+  in $p$ ist. Wir bezeichnen mit $C^k(O,N)$ die Abbildungen $f\colon O
+  \to N$ die auf ganz $O$ $C^k$ sind und speziell sei $C^k(O) :=
+  C^k(O,\R)$. 
+
+  Eine Abbildung $f\colon O\to N$ heißt \emph{$C^k$-Diffeomorphismus},
+  falls $f$ bijektiv ist, $f$ $C^k$ auf $O$ ist und $f^{-1}$ $C^k$ auf
+  $N$ ist.
+
+  Zwei Mannigfaltigkeiten heißen \emph{$C^k$-diffeomorph}, falls es
+  einen $C^k$-Diffeomorphismus zwischen ihnen gibt.
+\end{definition}
+
+\textbf{VEREINBARUNG:} Differenzierbar oder glatt heißt bei uns immer
+$C^\infty$. Ein Diffeomorphismus ist glatt (falls nicht anders erwähnt).
+
+\begin{proposition}
+  Seien $M,N$ Mannigfaltigkeiten, $p\in M$ und $f\colon M \to
+  N$ stetig. Damit $f$ $C^k$ in $p$ ist genügt es, dass es eine Karte
+  $(U,\phi)$ um $p$ und eine Karte $(V,\psi)$ um $f(p)$ gibt, sodass
+  $\psi\circ f\circ \phi^{-1}$ $C^k$ in $\phi(p)$ ist. 
+
+  Insbesondere
+  ist also $f\colon M \to \R$ $C^k$ in $p$, falls es eine Karte
+  $(U,\phi)$ um $p$ gibt, sodass $f\circ \phi^{-1}$ $C^k$ um $\phi(p)$ ist.
+\end{proposition}
+
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit und $(U,\phi)$ eine Karte. Dann ist
+  $\phi\colon U \to \phi(U)$ ein Diffeomorphismus.
+\end{proposition}
+
+\begin{proposition}
+  Seien $M,N,P$ Mannigfaltigkeiten, $f\colon M \to N$ und $g\colon
+  N\to P$ Abbilungen. Ist $f$ $C^k$ in $p$ und $g$ ist $C^k$ in
+  $f(p)$, so ist $g\circ f$ $C^k$ in $p$.
+\end{proposition}
+
+\begin{definition}
+ Sei $M$ eine Mannigfaltigkeit. Eine
+  \emph{Zerlegung der Eins auf $M$} ist eine
+  Familie $\set{\epsilon_i}_{i\in I}$ von Abbildungen, sodass
+  \begin{properties}
+  \item Die Menge $\set{\supp\epsilon_i}_{i\in I}$ ist lokal endlich,
+  \item $\epsilon_i \colon M \to \R$ ist glatt,
+  \item $0\leq \epsilon_i \leq 1$ und
+  \item $\sum_{i\in I}\epsilon_i(p) = 1$ für alle $p\in M$. 
+  \end{properties}
+
+  Ist $\mathcal{U_j}_{j\in J}$ eine offene Überdeckung von $M$, so
+  heißt eine Zerlegung der Eins $\set{\epsilon_i}_{i\in I}$ der
+  Überdeckung $\mathcal{U_j}_{j\in J}$ \emph{untergeordnet}, falls es
+  für alle $i\in I$ ein $j\in J$ gibt, sodass $\supp\epsilon_i \subset
+  U_j$.
+\end{definition}
+
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit und $\mathcal{U_j}_{j\in J}$ eine
+  offene Überdeckung von $M$. Dann gibt es eine abzählbare Zerlegung
+  der Eins $\set{\epsilon_i}_{i\in I}$, die $\mathcal{U_j}_{j\in J}$ untergeorddnet ist, sodass
+  $\supp\epsilon_i$ kompakt ist.
+
+  Verzichtet man auf die Kompaktheit des Trägers, so gibt es eine
+  Zerlegung der Eins $\set{\epsilon_j}_{j\in J}$ mit $\supp\epsilon_j
+  \subset U_j$ (gleicher Index!) wobei höchstens abzählbar viele
+  $\epsilon_j$ nicht identisch verschwinden.
+\end{proposition}
+
+\begin{korollar}
+  Sei $M$ eine Mannigfaltigkeit, $O\subset M$ offen und $A \subset O$
+  abgeschlossen. Dann gibt es eine glatte Abbildung $h\colon M \to
+  \R$, sodass $h|_A = 1$ und $h|_{M\setminus U} = 0$ und $0 \leq h
+  \leq 1$.
+
+  Eine solche Abbildung heißt \emph{Hutfunktion}.
+\end{korollar}
+
+\subsection{Der Tangentialraum an einen Punkt}
+\label{sec:tpm}
+
+Sei $M^m$ eine Mannigfaltigkeit und $p \in M$. Das Ziel dieses
+Abschnitts ist es, einen Vektorraum zu definieren, der ``tangential''
+an $M$ ist. Ist $M$ etwa als eine Teilmenge eines $\R^n$ angegeben
+(etwa eine Sphäre), so hat man eine intuitive Vorstellung, welchen
+(affine) Teilraum des $\R^n$ man als ``tangential in $p$'' bezeichnet.
+
+Uns stellt sich dabei nun folgendes Problem: wie kann man den
+Tangentialraum an eine \Mfk\ definieren, ohne auf einen umgebenden
+Raum zurückzugreifen (man nennt dies auch ``intrinsisch'')? Wir wollen
+vier verschiedene Ideen vorstellen und dann zeigen, dass diese vier
+Vektorräume kanonisch isomorph sind, also im Prinzip denselben
+Vektorraum beschreiben.
+
+\textbf{Idee 1 (geometrisch):} Ist $\alpha \colon (-1,1) \to M$ eine
+glatte Abbildung mit $\alpha(0) = p$ (``ein Weg durch $p$''), so
+bestimmt diese Abbildung anschaulich einen Vektor, der Tangential an
+$M$ liegt (den ``Geschwindigkeitsvektor'' der Kurve). Diesen kann man
+``messen'', indem man eine Karte $(U,x)$ um $p$ wählt und dann
+\begin{equation*}
+  \eval\ddt x\circ \alpha(t)\at{t=0}
+\end{equation*}
+berechnet. Da es natürlich mehrere Kurven mit demselben
+``Geschwindigkeitsvektor'' gibt, muss man diese noch miteinander
+identifizieren. Präzisieren wir diese Idee:
+\begin{definition}
+  Eine glatte Abbildung $\alpha \colon (-1,1) \to M$ mit $\alpha(0) =
+  p$ heißt \emph{glatter Weg durch $p$} oder auch \emph{glatte Kurve
+    durch $p$}.
+
+  Zwei glatte Kurven $\alpha,\beta$ durch $p$ berühren sich
+  \emph{tangential} oder \emph{in erster Ordnung}, in Zeichen $\alpha
+  \sim_1 \beta$, falls für alle Karten $(U,x)$ um $p$ gilt, dass
+  \begin{equation}\label{eq:firstordercontact}
+    \eval\ddt x\circ \alpha(t)\at{t=0} = \eval\ddt x\circ \beta(t)\at{t=0}
+  \end{equation}
+  und wir schreiben
+  \begin{equation*}
+    \dot\alpha(0) := \set{ \beta \mid \beta\text{ glatte Kurve durch
+        $p$ und } \alpha \sim_1 \beta }
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  Es gilt
+  \begin{statements}
+  \item Die Relation $\sim_1$ ist eine Äquivalenzrelation.
+  \item Gilt Gleichung \eqref{eq:firstordercontact} für eine Karte um
+    $p$, so gilt sie bereits für alle Karten um $p$.
+  \end{statements}
+\end{proposition}
+\begin{bemerkung}
+  Man muss also die Gleichheit des ``Geschwindigkeitsvektors nur für
+  eine Karte nachprüfen.
+\end{bemerkung}
+
+\begin{definition}
+  Wir definieren nun
+  \begin{equation*}
+    T^{geo}_pM := \set{\dot\alpha(0) \mid \alpha \text{ glatte Kurve
+        durch $p$}}
+  \end{equation*}
+  den \emph{(geometrischen) Tangentialraum an $p$}.
+\end{definition}
+
+Das Hauptproblem an diesem Ansatz ist es, dass man auf $T^{geo}_pM$ keine ganz
+offensichtliche \VR-Struktur hat. Ein weiterer Abstraktionsschritt liefert
+
+\textbf{Idee 2 (physikalisch):} Sei $\alpha$ eine Kurve durch
+$p$ und $(U,x)$, $(V,y)$ zwei Karten um $p$. Ist nun
+\begin{equation*}
+  \xi := \eval\ddt x\circ \alpha(t)\at{t=0}\text{ und }\eta :=
+  \eval\ddt y\circ \alpha(t)\at{t=0}
+\end{equation*}
+so rechhnet man leicht nach, dass $\xi = \Jac_{y(p)}(x\circ
+y^{-1})\eta$ gilt. Die Idee ist es nun, Tupel von
+Karten und Vektoren des $\R^m$ zu identifizieren, falls sich die
+Vektoren mit der Jacobischen des Kartenwechsels transformieren
+(physikalische Idee, da man Karten als ``Labore'' interpretieren kann
+und Physiker Dinge darüber charakterisieren, wie sich
+``Messergebnisse'' umrechnen). Wir erhalten
+\begin{definition}
+  Sei $A_p := \set{ (U,x,\xi) \mid (U,x) \text{ Karte um $p$}, \xi \in
+    \R^m}$. Wir definieren die folgende Relation: $(U,x,\xi) \sim
+  (V,y,\eta)$, falls $(U,x,\xi),(V,y,\eta) \in A_p$ und $\xi =
+  \Jac_{y(p)}(x\circ y^{-1})\eta$ und bezeichnen
+  \begin{equation*}
+    [U,x,\xi] := \set{(V,y,\eta) \mid (U,x,\xi) \sim (V,y,\eta)}
+  \end{equation*}
+  und den \emph{(physikalischen) Tangentialraum an $p$} mit
+  \begin{equation*}
+    T^{phy}_pM := \set{ [U,x,\xi] \mid (U,x\xi) \in A_p }
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  Es gilt
+  \begin{statements}
+  \item Die Relation $\sim$ ist eine Äquivalenzrelation.
+  \item Ist $(U,x)$ eine Karte um $p$, so gibt es für jedes Element
+    $v\in T^{phy}_pM$ einen Represäntanten der Form $(U,x,\xi)$.
+  \item Definiert man
+    \begin{equation*}
+      \lambda[U,x,\xi] + [V,y,\eta] := [U,x,\lambda\xi + \tilde\eta]
+    \end{equation*}
+    wobei $(U,x,\tilde\eta) \in [V,y,\eta]$, so erhält man eine
+    wohldefinierte \VR-Struktur auf $T_p^{phy}M$.
+  \item Für jede Karte $(U,x)$ um $p$ ist
+    \begin{equation*}
+      \set{[U,x,e^i] \mid i=1,\dots,\dim M}
+    \end{equation*}
+    eine Basis von $T^{phy}_pM$, wobei $e^1,\dots,e^m$ die
+    Standardbasis des $\R^m$ bezeichnet. Insbesondere ist $\dim
+    T^{phy}_pM = \dim M = m$.
+  \end{statements}
+\end{proposition}
+
+Um den Zusammenhang zur ersten Idee herzustellen:
+\begin{proposition}
+  Sei $(U,x)$ eine Karte um $p$, $\lambda\in \R$ und $\dot\alpha(0),\dot\beta(0)\in
+  T^{geo}_pM$. Definiere dann
+  \begin{equation*}
+    \gamma \colon (-1,1) \to M, t\mapsto x^{-1}\bigg( 
+    \lambda\cdot \eval\ddt x\circ\alpha(t)\at{t=0}\cdot t + \eval\ddt
+    x\circ\beta(t)\at{t=0} \cdot t + x(p)\bigg)
+  \end{equation*}
+  Dann ist $\gamma$ eine Kurve durch $p$ und durch
+  \begin{equation*}
+    \lambda \dot\alpha(0) + \dot\beta(0) := \dot\gamma(0)
+  \end{equation*}
+  wird eine wohldefinierte, von der Karte unabhängige \VR-Struktur auf
+  $T^{geo}_pM$ definiert.
+
+  Mit dieser \VR-Struktur gilt nun $T^{geo}_pM \equiv T^{phy}_pM$.
+\end{proposition}
+
+
+
+\subsection{Produkt- und Untermannigfaltigkeiten}
+\label{sec:prumfk}
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 
