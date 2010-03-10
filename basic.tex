@@ -197,142 +197,132 @@ $C^\infty$. Ein Diffeomorphismus ist glatt (falls nicht anders erwähnt).
 \subsection{Der Tangentialraum an einen Punkt}
 \label{sec:tpm}
 
-Sei $M^m$ eine Mannigfaltigkeit und $p \in M$. Das Ziel dieses
-Abschnitts ist es, einen Vektorraum zu definieren, der ``tangential''
-an $M$ ist. Ist $M$ etwa als eine Teilmenge eines $\R^n$ angegeben
-(etwa eine Sphäre), so hat man eine intuitive Vorstellung, welchen
-(affine) Teilraum des $\R^n$ man als ``tangential in $p$'' bezeichnet.
-
-Uns stellt sich dabei nun folgendes Problem: wie kann man den
-Tangentialraum an eine \Mfk\ definieren, ohne auf einen umgebenden
-Raum zurückzugreifen (man nennt dies auch ``intrinsisch'')? Wir wollen
-vier verschiedene Ideen vorstellen und dann zeigen, dass diese vier
-Vektorräume kanonisch isomorph sind, also im Prinzip denselben
-Vektorraum beschreiben.
-
-\textbf{Idee 1 (geometrisch):} Ist $\alpha \colon (-1,1) \to M$ eine
-glatte Abbildung mit $\alpha(0) = p$ (``ein Weg durch $p$''), so
-bestimmt diese Abbildung anschaulich einen Vektor, der Tangential an
-$M$ liegt (den ``Geschwindigkeitsvektor'' der Kurve). Diesen kann man
-``messen'', indem man eine Karte $(U,x)$ um $p$ wählt und dann
-\begin{equation*}
-  \eval\ddt x\circ \alpha(t)\at{t=0}
-\end{equation*}
-berechnet. Da es natürlich mehrere Kurven mit demselben
-``Geschwindigkeitsvektor'' gibt, muss man diese noch miteinander
-identifizieren. Präzisieren wir diese Idee:
 \begin{definition}
-  Eine glatte Abbildung $\alpha \colon (-1,1) \to M$ mit $\alpha(0) =
-  p$ heißt \emph{glatter Weg durch $p$} oder auch \emph{glatte Kurve
-    durch $p$}.
-
-  Zwei glatte Kurven $\alpha,\beta$ durch $p$ berühren sich
-  \emph{tangential} oder \emph{in erster Ordnung}, in Zeichen $\alpha
-  \sim_1 \beta$, falls für alle Karten $(U,x)$ um $p$ gilt, dass
-  \begin{equation}\label{eq:firstordercontact}
-    \eval\ddt x\circ \alpha(t)\at{t=0} = \eval\ddt x\circ \beta(t)\at{t=0}
-  \end{equation}
-  und wir schreiben
+  Sei $M$ eine Mannigfaltigkeit und $p\in M$. Wir definieren für $f,g
+  \in C^\infty(M)$ die Relation
   \begin{equation*}
-    \dot\alpha(0) := \set{ \beta \mid \beta\text{ glatte Kurve durch
-        $p$ und } \alpha \sim_1 \beta }
+    f \sim_p g \iff \exists U\text{ Umgebung von $p$ mit } f|_U = g|_U
   \end{equation*}
+  und bezeichnen mit $f_p := \set{g\in C^\infty(M) \mid g\sim_p f}$
+  den sogenannten \emph{glatten Funktionskeim von $f$ in $p$} und mit
+  $C^\infty(p)$ die Menge der glatten Funktionskeime in $p$.
 \end{definition}
 
 \begin{proposition}
-  Es gilt
+  Sei $M$ eine Mannigfaltigkeit und $p\in M$. Dann gilt
   \begin{statements}
-  \item Die Relation $\sim_1$ ist eine Äquivalenzrelation.
-  \item Gilt Gleichung \eqref{eq:firstordercontact} für eine Karte um
-    $p$, so gilt sie bereits für alle Karten um $p$.
-  \end{statements}
-\end{proposition}
-\begin{bemerkung}
-  Man muss also die Gleichheit des ``Geschwindigkeitsvektors nur für
-  eine Karte nachprüfen.
-\end{bemerkung}
-
-\begin{definition}
-  Wir definieren nun
-  \begin{equation*}
-    T^{geo}_pM := \set{\dot\alpha(0) \mid \alpha \text{ glatte Kurve
-        durch $p$}}
-  \end{equation*}
-  den \emph{(geometrischen) Tangentialraum an $p$}.
-\end{definition}
-
-Das Hauptproblem an diesem Ansatz ist es, dass man auf $T^{geo}_pM$ keine ganz
-offensichtliche \VR-Struktur hat. Ein weiterer Abstraktionsschritt liefert
-
-\textbf{Idee 2 (physikalisch):} Sei $\alpha$ eine Kurve durch
-$p$ und $(U,x)$, $(V,y)$ zwei Karten um $p$. Ist nun
-\begin{equation*}
-  \xi := \eval\ddt x\circ \alpha(t)\at{t=0}\text{ und }\eta :=
-  \eval\ddt y\circ \alpha(t)\at{t=0}
-\end{equation*}
-so rechhnet man leicht nach, dass $\xi = \Jac_{y(p)}(x\circ
-y^{-1})\eta$ gilt. Die Idee ist es nun, Tupel von
-Karten und Vektoren des $\R^m$ zu identifizieren, falls sich die
-Vektoren mit der Jacobischen des Kartenwechsels transformieren
-(physikalische Idee, da man Karten als ``Labore'' interpretieren kann
-und Physiker Dinge darüber charakterisieren, wie sich
-``Messergebnisse'' umrechnen). Wir erhalten
-\begin{definition}
-  Sei $A_p := \set{ (U,x,\xi) \mid (U,x) \text{ Karte um $p$}, \xi \in
-    \R^m}$. Wir definieren die folgende Relation: $(U,x,\xi) \sim
-  (V,y,\eta)$, falls $(U,x,\xi),(V,y,\eta) \in A_p$ und $\xi =
-  \Jac_{y(p)}(x\circ y^{-1})\eta$ und bezeichnen
-  \begin{equation*}
-    [U,x,\xi] := \set{(V,y,\eta) \mid (U,x,\xi) \sim (V,y,\eta)}
-  \end{equation*}
-  und den \emph{(physikalischen) Tangentialraum an $p$} mit
-  \begin{equation*}
-    T^{phy}_pM := \set{ [U,x,\xi] \mid (U,x\xi) \in A_p }
-  \end{equation*}
-\end{definition}
-
-\begin{proposition}
-  Es gilt
-  \begin{statements}
-  \item Die Relation $\sim$ ist eine Äquivalenzrelation.
-  \item Ist $(U,x)$ eine Karte um $p$, so gibt es für jedes Element
-    $v\in T^{phy}_pM$ einen Represäntanten der Form $(U,x,\xi)$.
-  \item Definiert man
-    \begin{equation*}
-      \lambda[U,x,\xi] + [V,y,\eta] := [U,x,\lambda\xi + \tilde\eta]
-    \end{equation*}
-    wobei $(U,x,\tilde\eta) \in [V,y,\eta]$, so erhält man eine
-    wohldefinierte \VR-Struktur auf $T_p^{phy}M$.
-  \item Für jede Karte $(U,x)$ um $p$ ist
-    \begin{equation*}
-      \set{[U,x,e^i] \mid i=1,\dots,\dim M}
-    \end{equation*}
-    eine Basis von $T^{phy}_pM$, wobei $e^1,\dots,e^m$ die
-    Standardbasis des $\R^m$ bezeichnet. Insbesondere ist $\dim
-    T^{phy}_pM = \dim M = m$.
+  \item $\sim_p$ ist eine Äquivalenzrelation.
+  \item $C^\infty(p)$ ist eine kommutative $\R$-Algebra.
+  \item Die Abbildung $C^\infty(p) \ni f_p \mapsto f(p) \in \R$ ist
+    ein wohldefinierer $\R$-Algebrahomomorphismus. 
   \end{statements}
 \end{proposition}
 
-Um den Zusammenhang zur ersten Idee herzustellen:
-\begin{proposition}
-  Sei $(U,x)$ eine Karte um $p$, $\lambda\in \R$ und $\dot\alpha(0),\dot\beta(0)\in
-  T^{geo}_pM$. Definiere dann
+\begin{definition}
+  Seien $A,B$ $\R$-Algebren und $\rho \colon A \to B$ ein
+  Algebrahomomorphismus. Eine lineare Abbildung $\xi \colon A \to B$
+  heißt \emph{lineare Derivation entlang $\rho$}, falls
   \begin{equation*}
-    \gamma \colon (-1,1) \to M, t\mapsto x^{-1}\bigg( 
-    \lambda\cdot \eval\ddt x\circ\alpha(t)\at{t=0}\cdot t + \eval\ddt
-    x\circ\beta(t)\at{t=0} \cdot t + x(p)\bigg)
+    \xi(ab) = \xi(a)\rho(b) + \rho(a)\xi(b)
   \end{equation*}
-  Dann ist $\gamma$ eine Kurve durch $p$ und durch
-  \begin{equation*}
-    \lambda \dot\alpha(0) + \dot\beta(0) := \dot\gamma(0)
-  \end{equation*}
-  wird eine wohldefinierte, von der Karte unabhängige \VR-Struktur auf
-  $T^{geo}_pM$ definiert.
+  gilt.
+\end{definition}
 
-  Mit dieser \VR-Struktur gilt nun $T^{geo}_pM \equiv T^{phy}_pM$.
+\begin{definition}
+  Sei $M$ eine Mannigfaltigkeit und $p\in M$. Dann ist der
+  \emph{Tangentialraum an $p$} definiert als
+  \begin{equation*}
+    T_pM := \Der_p(M) := \set{ \xi \colon C^{infty}(p) \to \R\mid
+      \xi\text{ ist eine lineare Derivation entlang $f_p \mapsto f(p)$}}
+  \end{equation*}
+  Ein $\xi \in T_pM$ heißt \emph{Tangentialvektor}.
+
+  Ist $f_p\in C^\infty(p)$ so heißt $\xi(f_p)$ die
+  \emph{Richtungsableitung von $f$ in Richtung $\xi$}.
+\end{definition}
+
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit, $p\in M$, $U$ eine Umgebung von $p$
+  und $f\in C^\infty(U)$. Sei weiterhin $h$ eine Hutfunktion mit $p
+  \in \supp h \subset U$. Für $\xi \in T_pM$ ist dann $\xi(f) := \xi((hf)_p)$
+  wohldefiniert, das heißt unabhängig von $h$.
+
+  \textsc{Notation:} Ist $f\in C^\infty(U)$ so bezeichne $f_p$ den
+  Keim einer beliebigen Fortsetzung von $f$ auf $M$. Nach dieser
+  Proposition ist dies wohldefiniert. Für $\xi \in T_pM$ bezeichne $\xi(f) := \xi(f_p)$.
 \end{proposition}
 
+\begin{definition}
+  Sei $M$ eine Mannigfaltigkeit, $p\in M$ und $(U,x)$ eine Karte um
+  $p$. Dann heißt
+  \begin{equation*}
+    \eval \deldelxi \at{p}\colon C^\infty(p) \to \R, f_p \mapsto \eval
+    \deldelxi f\circ x^{-1}\at{x(p)}
+  \end{equation*}
+  der \emph{$i$-te Koordinatenvektor} für $i = 1,\dots,\dim M$.
+\end{definition}
 
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit, $p\in M$ und $\xi \in T_pM$. Ist
+  $c\colon p \mapsto c \in C^\infty(M)$ eine konstante Abbildung, so
+  gilt $\xi(c) = 0$.
+
+  Sind $f,g\in C^\infty(M)$ mit $f(p) = g(p) = 0$, so gilt $\xi(fg) = 0$.
+\end{proposition}
+
+\begin{lemma}
+  Sei $U\subset \R^n$ ein Sterngebiet mit Mittelpunkt $x_0$ und
+  $f\colon U \to \R$ sei $C^\infty$. Dann gibt es glatte Abbildungen
+  $g_i \colon U \to \R$, sodass
+  \begin{equation*}
+    f(x) = f(x_0) + \sum_{i=1}^n g_i(x) \pr^i(x)
+  \end{equation*}
+  für alle $x\in U$, wobei $\pr^i$ die kanonische Projektion auf die
+  $i$-te Komponente ist.
+\end{lemma}
+
+\begin{proposition}
+  Sei $M^m$ eine Mannigfaltigkeit, $p\in M$ und $(U,x)$ eine Karte um
+  $p$. Dann bilden die Koordinatenvektoren $\kvecxi[1],\dots,\kvecxi[m]$
+  eine Basis von $T_pM$. Insbesondere ist also $\dim T_pM = \dim M$.
+\end{proposition}
+
+\begin{proposition}
+  Sei $M^m$ eine Mannigfaltigkeit und $(U,x),(V,y)$ zwei Karten um $p\in
+  M$. Sei $\xi \in T_pM$ mit
+  \begin{equation*}
+    \xi = \sum_{i=1}^m \eta^i \kvecxi = \sum_{i=1}^m \mu^i \kvecyi
+  \end{equation*}
+  und sei $\eta = (\eta^1,\dots,\eta^m)$, $\mu =
+  (\mu^1,\dots,\mu^m)$. Dann gilt
+  \begin{equation*}
+    \eta = \Jac_{y(p)}(x\circ y^{-1})\mu
+  \end{equation*}
+\end{proposition}
+
+\begin{definition}
+  Sei $M$ eine Mannigfaltigkeit und sei $I\subset \R$ ein offenes Intervall. Eine glatte
+  Abbildung $\alpha \colon I \to M$ heißt \emph{glatter Weg (glatte
+    Kurve)} und falls $0\in I$ und $\alpha(0) = p$, so heißt $\alpha$
+  auch \emph{Kurve (Weg) durch $p$}.
+
+  Man definiert den \emph{Tangentenvektor von $\alpha$ zur Zeit $s$} durch
+  \begin{equation*}
+    \dot\alpha(s)(f) := \eval\ddt f\circ\alpha(t)\at{t=s} 
+  \end{equation*}
+  für alle $f\in C^\infty(\alpha(s))$.
+\end{definition}
+
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit und $\alpha \colon I \to M$ eine
+  glatte Kurve. Dann gilt $\dot\alpha(s) \in T_{\alpha(s)}M$.
+\end{proposition}
+
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit. Ist $M$ ein Vektorraum, so gibt es
+  für alle $p\in M$
+  einen kanonischen Isomorphismus zwischen $M$ und $T_pM$.
+\end{proposition}
 
 \subsection{Produkt- und Untermannigfaltigkeiten}
 \label{sec:prumfk}

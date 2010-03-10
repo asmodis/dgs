@@ -34,12 +34,15 @@
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Der}{Der}
 
 \newcommand{\dt}[1][t]{\,\mathrm{d} #1}
 \newcommand{\ddt}[1][t]{\frac{\mathrm{d}}{\mathrm{d} #1}}
 \newcommand{\deldelxi}[1][x^i]{\frac{\partial}{\partial #1}}
 \def\eval#1\at#2{\left.{#1}\right|_{#2}}
 
+\newcommand{\kvecxi}[1][i]{\eval\deldelxi[x^{#1}]\at{p}}
+\newcommand{\kvecyi}[1][i]{\eval\deldelxi[y^{#1}]\at{p}}
 
 
 \newcounter{propc}
