@@ -324,8 +324,123 @@ $C^\infty$. Ein Diffeomorphismus ist glatt (falls nicht anders erwähnt).
   einen kanonischen Isomorphismus zwischen $M$ und $T_pM$.
 \end{proposition}
 
+\subsection{Das Differential einer Abbildung in einem Punkt}
+\label{sec:differential}
+
+\begin{definition}
+  Seien $M,N$ Mannigfaltigkeiten, $f\colon M \to N$ glatt in $p\in
+  M$. Das \emph{(totale) Differential von $f$ in $p$} ist
+  \begin{equation*}
+    d_pf \colon T_pM \to T_{f(p)}N, \xi \mapsto d_pf(\xi)
+  \end{equation*}
+  wobei $d_pf(\xi)$ für $g\in C^\infty(N)$ wie folgt definiert ist
+  \begin{equation*}
+    d_pf(\xi)(g) := \xi(g\circ f)
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  Seien $M,N$ Mannigfaltigkeiten, $f\colon M \to N$ glatt in $p\in
+  M$. Dann ist das Differential $d_pf$ eine wohldefinierte lineare Abbildung.
+\end{proposition}
+
+\begin{definition}
+  Seien $M,N$ Mannigfaltigkeiten, $f\colon M \to N$ glatt in $p\in
+  M$. Dann ist der \emph{Rang von $f$ in $p$}, $\rnk_p f$, wie folgt definiert
+  \begin{equation*}
+    \rnk_p f := \dim d_pf(T_pM),
+  \end{equation*}
+  also als Rang der linearen Abbildung $d_pf$. Man sagt, $f$ hat
+  \emph{vollen Rang in $p$}, falls $\rnk_p f = \min(\dim M,\dim N)$.
+
+  Hat die Abbildung $f$ vollen Rang, so heißt sie
+  \begin{statements}
+  \item \emph{Submersion in $p$}, falls  $\dim M \geq \dim N$,
+  \item \emph{Immersion in $p$}, falls $\dim M \leq \dim N$ und
+  \item \emph{Bimersion in $p$}, falls $\dim M = \dim N$.
+  \end{statements}
+\end{definition}
+
+\begin{proposition}
+  Seien $M,N$ Mannigfaltigkeiten, $f\colon M \to N$ glatt in $p\in
+  M$. Dann ist $f$ genau dann eine
+  \begin{statements}
+  \item Submersion, falls $d_pf$ surjektiv ist.
+  \item Immersion, falls $d_pf$ injektiv ist.
+  \item Bimersion, falls $d_pf$ bijektiv ist.
+  \end{statements}
+\end{proposition}
+
+\begin{proposition}
+  Seien $M,N$ Mannigfaltigkeiten, $f\colon M \to N$ glatt. Dann ist
+  $\rnk f$ unterhalbsstetig, das heißt ist $\rnk_p f = k$, so gibt es
+  eine Umgebung $U$ von $p$, sodass $\rnk_q f \geq k$ für alle $q\in
+  U$.
+
+  Insbesondere haben Submersionen, Immersionen und Bimersionen einen
+  lokal konstanten Rang.
+\end{proposition}
+
+\begin{satz}[Satz vom konstanten Rang]
+  Seien $M^m,N^n$ Mannigfaltigkeiten, $f\colon M \to N$ glatt. Sei $p\in
+  M$ und $f$ habe lokal um $p$ konstanten Rang, das heißt es gibt eine
+  Umgebung $U$ um $p$, sodass $\rnk_qf = \rnk_pf$ für alle $q\in
+  U$. Dann gibt es eine Karte $(U,x=(x^1,\dots,x^m))$ um $p$ und eine
+  Karte $(V,y=(y^1,\dots,y^n))$ um $f(p)$, sodass $y\circ f = (x^1,\dots,x^k,0,\dots,0)$.
+\end{satz}
+
+\begin{korollar}[Normalformensatz]
+  Seien $M^m,N^n$ Mannigfaltigkeiten, $f\colon M \to N$ glatt. Dann gibt
+  es genau dann eine Karte $(U,x)$ um $p\in M$ und eine Karte $(V,y)$ um $f(p)$, sodass
+  \begin{statements}
+  \item $y\circ f\circ x^{-1} = \pr$, falls $f$ eine Submersion (und
+    damit $m\geq n$) ist
+    (wobei $\pr$ die Projektion $\R^m\to\R^n, (x^1,\dots,x^m) \mapsto
+    (x^1,\dots,x^n)$ bezeichnet).
+  \item $y\circ f\circ x^{-1} = \incl$, falls $f$ eine Immersion (und
+    damit $m\leq n$) ist
+    (wobei $\incl$ die Projektion $\R^m\to\R^n, (x^1,\dots,x^m) \mapsto
+    (x^1,\dots,x^m,0,\dots,0)$ bezeichnet).
+  \item $y\circ f\circ x^{-1} = \id$, falls $f$ eine Bimersion (und
+    damit $m = n$) ist.
+  \end{statements}
+\end{korollar}
+
+\begin{korollar}[Umkehrsatz]
+  Seien $M,N$ Mannigfaltigkeiten, $f\colon M \to N$ glatt. Dann ist
+  $f$ genau dann eine Bimersion in $p$, falls $f$ ein lokaler
+  Diffeomorphismus um $p$ ist, das heißt es gibt eine Umgebung von
+  $p$, sodass $f|_U\colon U \to f(U)$ ein Diffeomorphismus ist. 
+\end{korollar}
+
+\begin{proposition}
+  Seien $M,N$ Mannigfaltigkeiten, $f\colon M \to N$ glatt mit vollem
+  Rang. Ist $f$ injektiv, so ist $f$ eine Immersion.
+\end{proposition}
+
+\begin{proposition}
+  Seien $M,N$ Mannigfaltigkeiten und $f\colon M \to N$ eine
+  Submersion. Dann ist $f$ offen, das heißt für jede offene Menge
+  $U\subseteq M$ gilt, dass $f(U) \subseteq N$ offen ist.
+\end{proposition}
+
 \subsection{Produkt- und Untermannigfaltigkeiten}
 \label{sec:prumfk}
+
+\begin{proposition}
+  Seien $M_1^{m_1},\dots,M_n^{m_n}$ Mannigfaltigkeiten. Dann gibt es
+  eine eindeutig bestimmte glatte Struktur auf $M :=
+  M_1\times\dots\times M_n$, sodass die Projektionen $\pi_i \colon M
+  \to M_i$ Submersionen sind.
+\end{proposition}
+
+\begin{definition}
+  Seien $M_1^{m_1},\dots,M_n^{m_n}$ Mannigfaltigkeiten. Die obige
+  eindeutig bestimmte glatte  Struktur heißt
+  \emph{Produktmannigfaltigkeitsstruktur}. Wir vereinbaren, dass wir
+  ein Produkt von Mannigfaltigkeiten mit dieser Struktur versehen,
+  sofern nichts anderes erwähnt wird.
+\end{definition}
 
 
 
