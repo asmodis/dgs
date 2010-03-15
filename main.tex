@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, halfparskip*,titlepage]{scrartcl}
+\documentclass[a4paper, 12pt, halfparskip*,titlepage]{scrreprt}
 
 \input{preamble}
 
@@ -11,8 +11,16 @@
 \newpage
 \pagestyle{plain}
 
-\include{basic}
-\include{mla}
-\include{t_pm}
+\chapter{Grundlagen}
+\label{chap:basics}
+
+\input{basics_mfk}
+\input{basics_diffabb}
+\input{basics_tpm}
+\input{basics_umfk}
+\input{basics_vecbdl}
+
+%\include{mla}
+
 
 \end{document}
