@@ -1,0 +1,92 @@
+\section{Differenzierbare Abbildungen}
+\label{sec:diffabb}
+
+\begin{definition}
+  Seien $M,N$ Mannigfaltigkeiten, $O\subset M$ offen und
+  $p\in O$. Eine Abbildung $f\colon O \to N$
+  heißt \emph{$k$-fach differenzierbar in $p$} (man sagt auch
+  \emph{ist $C^k$ in $p$}), falls $f$ stetig ist und für alle Karten $(U,\phi)$ um $p$
+  und alle Karten $(V,\psi)$ um $f(p)$ gilt, dass $\psi\circ
+  f\circ\phi^{-1} \colon phi(U\cap f^{-1}(V)) \to \psi(f(U)\cap V)$
+  $C^k$ in $\phi(p)$ ist. Die Abbildung $f$ ist
+  \emph{$C^k$ auf $O$}, falls für alle $p\in O$ gilt, dass $f$ $C^k$
+  in $p$ ist. Wir bezeichnen mit $C^k(O,N)$ die Abbildungen $f\colon O
+  \to N$ die auf ganz $O$ $C^k$ sind und speziell sei $C^k(O) :=
+  C^k(O,\R)$. 
+
+  Eine Abbildung $f\colon O\to N$ heißt \emph{$C^k$-Diffeomorphismus},
+  falls $f$ bijektiv ist, $f$ $C^k$ auf $O$ ist und $f^{-1}$ $C^k$ auf
+  $N$ ist.
+
+  Zwei Mannigfaltigkeiten heißen \emph{$C^k$-diffeomorph}, falls es
+  einen $C^k$-Diffeomorphismus zwischen ihnen gibt.
+\end{definition}
+
+\textbf{VEREINBARUNG:} Differenzierbar oder glatt heißt bei uns immer
+$C^\infty$. Ein Diffeomorphismus ist glatt (falls nicht anders erwähnt).
+
+\begin{proposition}
+  Seien $M,N$ Mannigfaltigkeiten, $p\in M$ und $f\colon M \to
+  N$ stetig. Damit $f$ $C^k$ in $p$ ist genügt es, dass es eine Karte
+  $(U,\phi)$ um $p$ und eine Karte $(V,\psi)$ um $f(p)$ gibt, sodass
+  $\psi\circ f\circ \phi^{-1}$ $C^k$ in $\phi(p)$ ist. 
+
+  Insbesondere
+  ist also $f\colon M \to \R$ $C^k$ in $p$, falls es eine Karte
+  $(U,\phi)$ um $p$ gibt, sodass $f\circ \phi^{-1}$ $C^k$ um $\phi(p)$ ist.
+\end{proposition}
+
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit und $(U,\phi)$ eine Karte. Dann ist
+  $\phi\colon U \to \phi(U)$ ein Diffeomorphismus.
+\end{proposition}
+
+\begin{proposition}
+  Seien $M,N,P$ Mannigfaltigkeiten, $f\colon M \to N$ und $g\colon
+  N\to P$ Abbilungen. Ist $f$ $C^k$ in $p$ und $g$ ist $C^k$ in
+  $f(p)$, so ist $g\circ f$ $C^k$ in $p$.
+\end{proposition}
+
+\begin{definition}
+ Sei $M$ eine Mannigfaltigkeit. Eine
+  \emph{Zerlegung der Eins auf $M$} ist eine
+  Familie $\set{\epsilon_i}_{i\in I}$ von Abbildungen, sodass
+  \begin{properties}
+  \item Die Menge $\set{\supp\epsilon_i}_{i\in I}$ ist lokal endlich,
+  \item $\epsilon_i \colon M \to \R$ ist glatt,
+  \item $0\leq \epsilon_i \leq 1$ und
+  \item $\sum_{i\in I}\epsilon_i(p) = 1$ für alle $p\in M$. 
+  \end{properties}
+
+  Ist $\mathcal{U_j}_{j\in J}$ eine offene Überdeckung von $M$, so
+  heißt eine Zerlegung der Eins $\set{\epsilon_i}_{i\in I}$ der
+  Überdeckung $\mathcal{U_j}_{j\in J}$ \emph{untergeordnet}, falls es
+  für alle $i\in I$ ein $j\in J$ gibt, sodass $\supp\epsilon_i \subset
+  U_j$.
+\end{definition}
+
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit und $\mathcal{U_j}_{j\in J}$ eine
+  offene Überdeckung von $M$. Dann gibt es eine abzählbare Zerlegung
+  der Eins $\set{\epsilon_i}_{i\in I}$, die $\mathcal{U_j}_{j\in J}$ untergeorddnet ist, sodass
+  $\supp\epsilon_i$ kompakt ist.
+
+  Verzichtet man auf die Kompaktheit des Trägers, so gibt es eine
+  Zerlegung der Eins $\set{\epsilon_j}_{j\in J}$ mit $\supp\epsilon_j
+  \subset U_j$ (gleicher Index!) wobei höchstens abzählbar viele
+  $\epsilon_j$ nicht identisch verschwinden.
+\end{proposition}
+
+\begin{korollar}
+  Sei $M$ eine Mannigfaltigkeit, $O\subset M$ offen und $A \subset O$
+  abgeschlossen. Dann gibt es eine glatte Abbildung $h\colon M \to
+  \R$, sodass $h|_A = 1$ und $h|_{M\setminus U} = 0$ und $0 \leq h
+  \leq 1$.
+
+  Eine solche Abbildung heißt \emph{Hutfunktion}.
+\end{korollar}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

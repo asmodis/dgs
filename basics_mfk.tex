@@ -1,0 +1,108 @@
+\section{Mannigfaltigkeiten}
+\label{sec:mfk}
+
+\begin{definition}
+  Sei $M$ eine nichtleere Menge und $m\in\N_0$. Ein Tupel $(U,\phi)$ heißt \emph{Karte auf
+    $M$}, falls
+  \begin{properties}
+  \item $U \subset M$,
+  \item $\phi\colon U \to \R^m$ eine injektive Abbildung ist und
+  \item $\phi(U)$ eine offene Teilmenge des $\R^m$ ist.
+  \end{properties}
+  Man nennt dann $U$ \emph{Kartengebiet} und $\phi$
+  \emph{Koordinatenabbildung} ($\phi^{-1}$ wird auch \emph{lokale
+  Parametrisierung} genannt). Ist $p\in U \subset M$, so sagt man
+auch, dass $(U,\phi)$ eine Karte \emph{um $p$} ist und falls $\phi(p)
+= 0$, so sagt man, dass $(U,\phi)$ eine \emph{um $p$ zentrierte} Karte ist. 
+
+  Eine Familie von Karten $A = \set{(U_i,\phi_i)}_{i\in  I}$ heißt
+  \emph{(glatter) Atlas auf $M$}, falls
+  \begin{properties}
+  \item $\exists m \in \N_0\ \forall i\in I\colon \phi_i(U_i) \subset \R^m$,
+  \item $\bigcup_{i\in I} U_i = M$,
+  \item $\phi_i(U_i\cap U_j), \phi_j(U_i\cap U_j)$ sind offen und
+  \item $\phi_i\circ \phi_j^{-1} \colon \phi_j(U_i\cap U_j) \to
+    \phi_i(U_i\cap U_j)$ ist $C^\infty$.
+  \end{properties}
+
+  Ein Atlas $A$ heißt \emph{maximal}, falls für jede Karte $(U,\phi)$,
+  für die $A\cup \set{(U,\phi)}$ ein glatter Atlas ist, bereits gilt, dass
+  $(U,\phi) \in A$. Ein maximaler glatter Atlas heißt auch
+  \emph{glatte Struktur}.
+
+  Ein Tupel $(M,D)$ heißt \emph{(glatte) Mannigfaltigkeit}, falls $D$
+  eine glatte Struktur ist. Eine Karte $(U,\phi)$ heißt \emph{zulässig},
+  falls $(U,\phi)\in D$. Die \emph{Dimension} $\dim M$ einer
+  Mannigfaltigkeit ist definiert als $\dim \phi(U)$ für eine zulässige
+  Karte (nach Definition eines Atlanten ist die Dimension wohldefiniert). 
+\end{definition}
+
+\begin{proposition}\label{prop:basic:atlasbestimmtstruktur}
+  Sei $A$ ein Atlas. Dann gibt es genau eine glatte Struktur $D$,
+  sodass $A\subseteq D$.
+
+  \textsc{Notation:} Für dieses $D$ schreiben wir auch $[A]$.
+\end{proposition}
+
+\begin{proposition}
+  Sei $(M,D)$  eine Mannigfaltigkeit und $p\in M$. Dann gibt es für
+  alle $0 < r \leq \infty$ eine zulässige um $p$ zentrierte Karte
+  $(U,\phi)$ mit $\phi(U) = B_r(0)$.
+\end{proposition}
+
+\begin{definition}
+  Sei $A$ ein Atlas. Die Initialtopologie bezüglich $A$ heißt
+  \emph{Atlastopologie}, in Zeichen $\tau(A)$. Ist $A$ maximal so heißt die Atlastopologie
+  auch \emph{Mannigfaltigkeitstopologie}.
+
+  Eine Mannigfaltigkeit $(M,D)$ ist immer mit der
+  Mannigfaltigkeitstopologie versehen.
+\end{definition}
+
+\begin{proposition}
+  Seien $A,B$ Atlanten, sodass $A\cup B$ wieder ein Atlas ist. Dann
+  gilt $\tau(A) = \tau(B)$. Insbesondere gilt also $\tau(A) =
+  \tau([A])$, die Mannigfaltigkeitstopologie wird also durch eine
+  geeignete Atlastopologie festgelegt.
+\end{proposition}
+
+\begin{proposition}
+  Sei $(M,D)$ eine Mannigfaltigkeit und $\tau$ eine Topologie auf
+  $M$. Dann gilt $\tau = \tau(D)$, falls für jede zulässige Karte
+  $(U,\phi)$ gilt, dass
+  \begin{properties}
+  \item $U$ eine offene Menge bezüglich $\tau$ ist und
+  \item $\phi \colon U \to \phi(U)$ ein Homeomorphismus bezüglich
+    $\tau$ ist.
+  \end{properties}
+\end{proposition}
+
+\begin{proposition}
+  Sei $(M,D)$ eine Mannigfaltigkeit. Dann hat $M$ abzählbare
+  Topologie, falls es einen abzählbaren Atlas $A$ mit $D=[A]$ gibt.
+
+  $M$ ist hausdorffsch, falls es für alle Punkte $p,q\in M$ entweder
+  eine zulässige Karte $(U,\phi)$ gibt mit $p,q\in U$ oder es zwei
+  zulässige Karten $(U,\phi),(V,\psi)$ gibt mit $p\in U$, $q\in V$ und
+  $U\cap V = \emptyset$.
+\end{proposition}
+
+\begin{proposition}
+  Sei $(M,D)$ eine Mannigfaltigkeit. Hat $M$ abzählbare Topologie und
+  ist hausdorffsch, so ist $M$ parakompakt.
+\end{proposition}
+
+\textbf{VEREINBARUNG:} Ab jetzt gilt immer, dass die
+Mannigfaltigkeitstopologie abzählbar und hausdorffsch ist. Wenn von
+Karten die Rede ist, sind immer zulässige Karten gemeint.
+
+Wir werden in Zukunft die glatte Struktur nicht mehr unbedingt mit
+angeben und erlauben uns, die Dimension einer Mannigfaltigkeit als
+Hochzahl anzugeben, das heißt $M^m$ bezeichnet eine Mannigfaltigkeit
+der Dimension $m$ (außer es ist aus dem Kontext klar, dass ein
+$m$-faches kartesisches Produkt gemeint ist).
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

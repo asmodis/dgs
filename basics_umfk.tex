@@ -1,0 +1,126 @@
+\section{Produkt- und Untermannigfaltigkeiten}
+\label{sec:prumfk}
+
+\begin{proposition}
+  Seien $M_1^{m_1},\dots,M_n^{m_n}$ Mannigfaltigkeiten. Dann gibt es
+  eine eindeutig bestimmte glatte Struktur auf $M :=
+  M_1\times\dots\times M_n$, sodass die Projektionen $\pi_i \colon M
+  \to M_i$ Submersionen sind und $\dim M = \sum_{i=1}^n m_i$.
+\end{proposition}
+
+\begin{definition}
+  Seien $M_1^{m_1},\dots,M_n^{m_n}$ Mannigfaltigkeiten. Die obige
+  eindeutig bestimmte glatte  Struktur heißt
+  \emph{Produktmannigfaltigkeitsstruktur}. Wir vereinbaren, dass wir
+  ein Produkt von Mannigfaltigkeiten mit dieser Struktur versehen,
+  sofern nichts anderes erwähnt wird.
+\end{definition}
+
+\begin{proposition}
+  Seien $M_1,\dots,M_n,P$ Mannigfaltigkeiten und $M :=
+  M_1\times\dots\times M_n$. Dann ist $f\colon P \to M$ genau dann
+  $C^k$, falls $\pi_i\circ f \colon P \to M_i$ für $i=1,\dots,n$ $C^k$
+  ist, wobei $\pi_i$ die kanonische Projektion bezeichnet.
+\end{proposition}
+
+\begin{definition}
+  Sei $M^m$ eine Mannigfaltigkeit und $N \subseteq M$. 
+  Man nennt $N$ \emph{Untermannigfaltigkeit von $M$ der Kodimension
+    $k$}, falls es um jeden Punkt $p\in N$ eine Karte $(U,x)$ gibt, sodass
+  \begin{equation*}
+    x(U\cap N) = \R^{m-k}\times\set{0}^{k} \cap x(U).
+  \end{equation*}
+  Eine solche Karte heißt \emph{angepasst an $N$}.
+\end{definition}
+
+\begin{proposition}
+  Sei $M^m$ eine Mannigfaltigkeit und $N\subset M$ eine
+  Untermannigfaltigkeit der Kodimension $k$. Dann gibt es eine
+  eindeutige glatte Struktur auf $N$, sodass $N$ eine
+  $m-k$-dimensionale Mannigfaltigkeit wird und die kanonische
+  Inklusion $\incl\colon N \to M$ eine Einbettung ist.
+\end{proposition}
+
+\begin{korollar}
+  Sei $M$ eine Mannigfaltigkeit und $O\subseteq M$ offen. Dann gibt es
+  eine eindeutig bestimmte glatte Struktur auf $O$, sodass
+  $\incl\colon O \to M$ eine Einbettung ist.
+
+  Wir werden offene Teilmengen mit dieser Struktur versehen, wenn
+  nichts anderes erwähnt wird.
+\end{korollar}
+
+\begin{satz}
+  Sei $M^m$ eine Mannigfaltigkeit und $N\subseteq M$. Dann sind äquivalent
+  \begin{statements}
+  \item $N$ ist eine Untermannigfaltigkeit der Kodimension $k$.
+  \item Zu jedem Punkt $p\in N$ gibt es eine in $M$ offene Umgebung
+    $U\subset M$ von $p$ und einen Diffeomorphismus $\Phi\colon U \to
+    \Phi(U) \subseteq \R^m$, sodass $\Phi(U\cap N) = \Phi(U)\cap
+    \R^{m-k}\times\set{0}^k$.
+  \item Zu jedem Punkt $p\in N$ gibt es eine in $M$ offene Umgebung
+    $U\subset M$ von $p$ und eine Submersion $g\colon U \to \R^k$,
+    sodass $U\cap N = g^{-1}(\set{0})$. Man nennt $g$ auch
+    \emph{lokale Beschreibung von $N$ um $p$}.
+  \item Zu jedem Punkt $p\in N$ gibt es eine in $M$ offene Umgebung
+    $U\subset M$ von $p$, eine Umgebung $O\subset \R^{m-k}$ der $0$
+    und eine Immersion $\phi\colon O \to M$,
+    sodass $\phi(O) = U\cap N$ und $\phi(0) = p$. Man nennt $\phi$
+    auch \emph{lokale Parametrisierung um $p$.}
+  \end{statements}
+\end{satz}
+
+\begin{proposition}
+  Seien $M^m,N^n$ Mannigfaltigkeiten und $f\colon M \to N$ glatt. Sei
+  $q\in N$ und $P := f^{-1}(\set{q})$ nichtleer. Ist $f$ eine
+  Submersion auf $P$,, so ist $P$ eine Untermannigfaltigkeit von $M$
+  der Kodimension $n$.
+\end{proposition}
+
+\begin{proposition}
+  Seien $M,P$ Mannigfaltigkeiten und $f\colon M\to P$ glatt.
+  \begin{statements}
+  \item Ist $N\subset M$ eine Untermannigfaltigkeit, dann ist auch
+    $f|_N\colon N \to P$ glatt.
+  \item Ist $N\subset P$ eine Untermannigfaltigkeit und ist
+    $f(M)\subseteq N$, dann ist auch
+    $f\colon M \to N$ glatt.
+  \end{statements}
+\end{proposition}
+
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit und $N\subseteq M$ eine
+  Untermannigfaltigkeit. Dann ist für $p\in N$ die Abbildung $d_p\incl
+  \colon T_pN \to T_pM$ injektiv. Man kann also kanonisch $T_pN$ als
+  Untervektorraum von $T_pM$ auffassen.
+
+  Ist $g$ eine lokale Beschreibung um $p$ und $\phi$ eine lokale
+  Parametrisierung um $p$ mit $\phi(0) = p$, dann gilt
+  \begin{equation*}
+    T_pN = \ker d_p g = \Img d_0\phi
+  \end{equation*}
+\end{proposition}
+
+\begin{definition}
+  Seien $M,N$ Mannigfaltigkeiten und $f\colon M \to N$ glatt. Falls
+  $f$ eine Immersion ist, so heißt $f\colon M\to N$ (beziehungsweise
+  $f(M)$) \emph{immersierte Untermannigfaltigkeit}. Falls $f$ eine
+  Einbettung ist, so heißt $f\colon M \to N$ (beziehungsweise $f(M)$)
+  \emph{eingebettete Untermannigfaltigkeit}.
+\end{definition}
+
+\begin{proposition}
+  Seien $M,N$ Mannigfaltigkeiten und $f\colon M\to N$ eine Einbettung. Dann ist
+  $f(M)$ eine Untermannigfaltigkeit von $N$ mit Kodimension $\dim N -
+  \dim M$. Ist umgekehrt $M\subset N$ eine Untermannigfaltigkeit, so
+  ist $\incl\colon M \to N$ eine eingebettete Untermannigfaltigkeit.
+
+  \textsc{Sprechweise:} Wir werden daher in Zukunft nicht mehr
+  zwischen Untermannigfaltigkeiten und eingebettetn
+  Untermannigfaltigkeiten unterscheiden.
+\end{proposition}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 
