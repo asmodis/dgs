@@ -1,17 +1,25 @@
-\section{Faserbündel}
+\section{Vektorbündel}
 \label{sec:faserbl}
 
 \begin{definition}
-  Seien $E,M,F$ Mannigfaltigkeiten und $\pi\colon E \to M$ glatt. Man
-  nennt $(E,M,\pi,F)$ \emph{Faserbündel über $M$ mit Fasertyp $F$} (oder auch \emph{$F$-Faserbündel}), falls
+  Seien $E,M$ Mannigfaltigkeiten, $r\in\N$, $\K=\R,\C$ und $\pi\colon E \to M$ glatt. Man
+  nennt $(E,M,\pi)$ \emph{$\K$-Vektorbündel vom Rang $r$ über $M$}, falls
   \begin{properties}
   \item $\pi\colon E \to M$ eine surjektive Submersion ist und
   \item für jeden Punkt $p\in M$ existiert eine Umgebung $U$ von $p$
-    und ein Diffeomorphismus $\Phi = (\Phi_1,\Phi_2) \colon \pi^{-1}(U) \to U\times F$,
-    sodass $\Phi_1(e) = \pi(e)$ gilt.
+    und ein Diffeomorphismus $\Phi = (\Phi_1,\Phi_2) \colon \pi^{-1}(U) \to U\times \K^r$,
+    sodass $\Phi_1(e) = \pi(e)$ und $\Phi_p :=
+    \Phi_2|_{\pi^{-1}(\set{p})} \colon \pi^{-1}(\set{p}) \to \K^r$
+    ein linearer Isomorphismus ist.
   \end{properties}
-  Dabei heißt $E$ der \emph{Totalraum}, $M$ der \emph{Basisraum} und
-  $\pi$ die \emph{Bündelprojektion}. Ein Paar $(U,\Phi)$ wie in (ii)
+  \textsc{Schreibweise:} Oft schreiben wir nur $\pi\colon
+  E\to M$ oder sogar nur $E$ für ein Vektorbündel. Der Rang eines
+  Bündels $E$ wird mit $\rnk E$ bezeichnet. Ist der Körper $\K$ aus
+  dem Kontext klar (oder egal), so lassen wwir in weg.
+
+  \textsc{Bezeichnungen:} Ist $\pi\colon E\to M$ ein Vektorbündel mit
+  $\rnk E = r$, so heißt $E$ \emph{Totalraum}, $M$ \emph{Basisraum} und
+  $\pi$ \emph{Bündelprojektion}. Ein Paar $(U,\Phi)$ wie in (ii)
   heißt \emph{Bündelkarte}, $U$ heißt \emph{lokal trivialisierende
     Umgebung} und $\Phi$ heißt \emph{lokale Trivialisierung}. Ein
   \emph{Bündelatlas} ist eine Familie von Bündelkarten, sodass die
@@ -22,48 +30,73 @@
   \pi^{-1}(\set{p})$ die \emph{Faser über  $p$} und $E_U :=
   \pi^{-1}(U)$ das \emph{Teilbündel über $U$}.
 
-  \textsc{Notation:} Wir schreiben statt des $4$-Tupels oft einfach
-  nur $\pi\colon E\to M$ oder nur $E$ für ein Faserbündel.
+  Ist $(U,\Phi)$ eine Bündelkarte, so bezeichnen $\pr_1,\pr_2\colon
+  U\times \K^r$ die kanonischen Projektionen auf die erste und zweite Komponente.
 \end{definition}
 
 \begin{proposition}
-  Seien $M,F$ Mannigfaltigkeiten. Dann ist $\trivbl{F} := M\times F$ zusammen mit
-  $\pi(p,f) = p$ ein Faserbündel mit Fasertyp $F$.
+  Sei $E\to M$ ein $\K$-Vektorbündel vom Rang $r$. Dann gilt $\dim E =
+  \dim M + \dim_\R\K\cdot r$.
 \end{proposition}
 
 \begin{proposition}
-  Sei $\pi\colon E\to M$ ein $F$-Faserbündel, $p\in M$ und $(U,\Phi)$
-  eine Bündelkarte um $p$. Dann ist $\Phi_p \colon E_p \to F, e
-  \mapsto \pr_2(\Phi(e))$ ein Diffeomorphismus, wobei $\pr_2 \colon
-  \set{p} \times F \to F$ die kanonische Projektion ist.
+  Sei $E\to M$ ein Vektorbündel und $U\subset M$ offen. Dann ist das
+  Teilbündel $E_U$ ein Vektorbündel über $U$.
+\end{proposition}
+
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit. Dann ist $\trivbl{\K^r} := M\times \K^r$ zusammen mit
+  $\pi(p,f) = p$ ein $\K$-Vektorbündel vom Rang $r$. Man nennt
+  $\trivbl{\K^r}$ das \emph{triviale $\K$-Vektorbündel}.
 \end{proposition}
 
 \begin{definition}
-  Seien $M,F$ Mannigfaltigkeiten und $\pi\colon E\to M$ ein
-  Faserbündel mit Fasertyp $F$. Das Bündel $\trivbl{F} := M\times F$
-  heißt \emph{triviales Bündel vom Typ $F$} und man nennt $E$
-  \emph{trivialisierbar}, falls es eine globale Bündelkarte gibt, das
-  heißt einen Diffeomorphismus $\Phi \colon E \to U \times F$.
+  Seien $\pi_E\colon E\to M$ und $\pi_F\colon F \to N$ zwei
+  $\K$-Vektorbündel und $g\colon M\to N$ glatt. Eine Abbildung
+  $G\colon E\to F$ heißt \emph{Bündelmorphismus entlang $g$}, falls
+  $g\circ\pi_E = \pi_F\circ G$ und $G_p := G|_{E_p} \colon E_p \to
+  F_{g(p)}$ linear ist.
+
+  Ist $g$ ein Diffeomorphismus, so heißt eine bijektive Abbildung $G
+  \colon E\to F$ \emph{Bündelisomorphismus
+    entlang $g$}, falls $G$ ein Bündelmorphismus entlang $g$ und
+  $G^{-1}$ ein Bündelmorphismus entlang $g^{-1}$ ist.
+
+  Ist $M=N$ so heißt ein Bündelmorphismus entlang $\id$ einfach nur
+  \emph{Bündel(homo)morphismus} und ein Bündelisomorphismus entlang
+  $\id$ heißt \emph{Bündelisomorphismus}.
+
+  Zwei Bündel heißen \emph{isomorph (entlang $g$)}, falls es einen
+  Bündelisommorphismus (entlang $g$) gibt. Ein Bündel heißt
+  \emph{trivialisierbar}, falls es isomorph zum trivialen Bündel ist.
 \end{definition}
 
+\begin{proposition}
+  Ein Bündel $E\to M$ ist genau dann trivialisierbar, wenn es eine
+  globale Bündelkarte $(M,\Phi)$ gibt.
+\end{proposition}
+
 \begin{definition}
-  Sei $\pi\colon E\to M$ ein $F$-Faserbündel und $(U_1,\Phi_1),
+  Sei $\pi\colon E\to M$ ein $\K$-Vektorbündel vom Rang $r$ und $(U_1,\Phi_1),
   (U_2,\Phi_2)$ zwei Bündelkarten um $p\in M$. Dann heißt
   \begin{equation*}
-    g_{12} \colon U_1\cap U_2 \to \Diff(F), p\mapsto \pr_2(\Phi_2\circ \Phi_1^{-1}(p,\cdot))
+    g_{12} \colon U_1\cap U_2 \to \GL(\K^r), p\mapsto \pr_2(\Phi_2\circ \Phi_1^{-1}(p,\cdot))
   \end{equation*}
   der \emph{Bündelübergang von $(U_1,\Phi_1)$ nach $(U_2,\Phi_2)$}.
 \end{definition}
 
+\subsection*{Charakterisierung durch Kozykel}
+
 \begin{definition}
-  Seien $M,f$ Mannigfaltigkeiten und $X$ eine Unterhalbgruppe von
-  $\Diff(F)$. Sei weiterhin $\set{U_i}_{i\in I}$ eine offene
+  Sei $M$ eine Mannigfaltigkeit und $X$ eine Menge von Abbildungen,
+  die abgeschlossen unter Komposition ist.
+  Sei weiterhin $\set{U_i}_{i\in I}$ eine offene
   Überdeckung von $M$ und $z = \set{ g_{ij} \colon U_i\cap U_j \to X}$
   eine Familie von Abbildungen. Man nennt $z$ einen
   \emph{$1$-Kozykel mit Werten in $X$}, falls er die \emph{Kozykelbedingung}
   \begin{statements}
   \item $g_{ii} = \id$
-  \item $g_{ij} g_{jk} = g_{ik}$ auf $U_i\cap U_j\cap U_k$
+  \item $g_{ij} \circ g_{jk} = g_{ik}$ auf $U_i\cap U_j\cap U_k$
   \end{statements}
   erfüllt.
 
@@ -71,50 +104,74 @@
   \emph{$1$-Korand mit Werten in $X$}, falls die $h_i$ invertierbar
   sind. Zwei Kozykel $\set{g_{ij}}$ und
   $\set{\tilde{g}_{ij}}$ heißen \emph{kohomolog}, falls es einen
-  Korand $\set{h_i}$ gibt, sodass $\tilde{g}_{ij} = h_i g_{ij} h_j^{-1}$ 
+  Korand $\set{h_i}$ gibt, sodass $\tilde{g}_{ij} = h_i \circ g_{ij}
+  \circ h_j^{-1}$ 
 \end{definition}
 
 \begin{proposition}
-  Sei $\set{(U_i,\Phi_i)}_{i\in I}$ ein Bündelatlas des $F$-Bündels
-  $\pi\colon E \to M$. Dann bilden die Bündelübergänge $g_{ij}$ einen
-  $1$-Kozykel mit Werten in $\Diff(F)$.
+  Sei $\set{(U_i,\Phi_i)}_{i\in I}$ ein Bündelatlas eines $\K$-Vektorbündels
+  $\pi\colon E \to M$ vom Rang $r$. Dann bilden die Bündelübergänge $g_{ij}$ einen
+  $1$-Kozykel mit Werten in $\GL(\K^r)$. Man nennt diesen Kozykel auch
+  \emph{Übergangskozykel (zur Überdeckung $\set{U_i}$)}.
 \end{proposition}
 
-\begin{definition}
-  Für $i=1,2$ sei $\pi_i\colon E_i \to M$ ein $F$-Faserbündel. Ein
-  \emph{Bündelhomomorphismus} 
-  ist eine glatte Abbildung $\Psi\colon E_1 \to E_2$, sodass
-  $\pi_2\circ F = \pi_1$. Ein \emph{Bündelisomorphismus} ist ein
-  Diffeomorphismus $\Psi\colon E_1\to E_2$, sodass $\Psi$ und
-  $\Psi^{-1}$ Bündelhomomorphismen sind. Zwei Bündel heißen
-  \emph{isomorph}, falls es einen Bündelisomorphismus zwischen ihnen gibt.
-\end{definition}
+\begin{proposition}
+  Sei $M$ eine Mannigfaltigkeit und $\set{U_i}_{i\in I}$ eine offene
+  Überdeckung von $M$. Ist $z = \set{g_{ij}}$ ein 1-Kozykel mit Werten
+  in $\GL(\K^r)$, so gibt es ein $\K$-Vektorbündel vom Rang $r$,
+  welches über $\set{U_i}$ trivialisiert und dort $z$ als
+  Übergangskozykel hat.
+\end{proposition}
 
 \begin{proposition}
-  Seien $E,\tilde E \to M$ $F$-Faserbündel die beide über der offenen
-  Überdeckung $\set{U_i}_{i\in I}$ trivialisieren mit Bündelatlanten
-  $\set{(U_i,\Phi_i)}$ und $\set{(U_i,\tilde \Phi_i)}$. Dann sind die
-  zugehörigen Übergangskozykel $\set{g_{ij}}$ und
-  $\set{\tilde{g}_{ij}}$ genau dann kohomolog, wenn die Bündel
-  isomorph sind.
+  Seien $E\to M$, $F\to M$ Vektorbündel die beide über der offenen
+  Überdeckung $\set{U_i}_{i\in I}$ von $M$ trivialisieren. Dann sind $E$ und $F$ genau
+  dann isomorph, wenn die jeweiligen Übergangskozykel kohomolog sind.
 \end{proposition}
 
 \begin{satz}
-  Seien $M,F$ Mannigfaltigkeiten und $\set{U_i}_{i\in I}$ eine offene
-  Überdeckung von $M$. Ist $\set{g_{ij}}$ ein 1-Kozykel mit Werten in
-  $\Diff(F)$, dann gibt ein bis auf Bündelisomorphie eindeutiges
-  $F$-Faserbündel über $M$, dessen Übergangskozykel kohomolog zu
-  $\set{g_{ij}}$ ist.
+  Sei $M$ eine Mannigfaltigkeit und $\set{U_i}_{i\in I}$ eine offene
+  Überdeckung von $M$. Ist $z = \set{g_{ij}}$ ein 1-Kozykel mit Werten
+  in $\GL(\K^r)$, so gibt es ein bis auf Bündelisomorphie eindeutiges $\K$-Vektorbündel vom Rang $r$,
+  welches über $\set{U_i}$ trivialisiert und dessen Übergangskozykel
+  zu $z$ kohomolog ist.
 \end{satz}
 
+\subsection*{Rahmen und Schnitte}
+
 \begin{definition}
-  Sei $\pi\colon E \to M$ ein Faserbündel. Eine glatte Abbildung $s \colon M \to E$
-  heißt \emph{glatter Schnitt}, falls $\pi\circ s = \id$. Wir
-  bezeichnen
-  \begin{equation*}
-    \Gamma(E) := \set{s\colon M \to E\mid s\text{ glatter Schnitt}}
-  \end{equation*}
+  Sei $\pi \colon E\to M$ ein Vektorbündel vom Rang $r$. Eine
+  Abbildung $s\colon M \to E$ heißt \emph{rauher Schnitt in/von $E$}, falls
+  $\pi\circ s 0 \id$. Ein \emph{(glatter) Schnitt in/von $E$} ist ein
+  rauher Schnitt, der glatt ist. Die Menge aller glatten Schnitte wird
+  mit $\Gamma(E)$ bezeichnet. Man schreibt oft $s_p := s(p)$ für einen
+  Schnitt $s\in \Gamma(E)$. Ein \emph{lokaler Schnitt über $U\subset
+    M$} ist ein (globaler) Schnitt über $E_U$.
+
+  Man nennt Schnitte $s_1,\dots,s_n$ \emph{linear unabhängig}, falls
+  sie dies Punktweise sind. Ein \emph{(lokaler) Rahmen  über $U\subset
+    M$} $\vbframe{\Psi}
+  = (\Psi_1,\dots,\Psi_r)$ ist ein $r$-Tupel aus lokalen Schnitten
+  $\Psi_i \in \Gamma(E_U)$, sodass
+  $\vbframe{\Psi}_p = (\Psi_1(p),\dots,\Psi_r(p))$ für jedes $p\in U$
+  eine Basis von $E_p$ ist.
 \end{definition}
+
+\begin{proposition}
+  Für$s,t\in\Gamma(E)$ und $f\inC^\infty(M)$ wird durch $(fs + t)(p)
+  := f(p)s(p) + t(p)$ die Menge $\Gamma(E)$ zu einem lokal freien $C^\infty(M)$-Modul.
+\end{proposition}
+
+\begin{proposition}
+  Ist $E\to M$ ein Vektorbündel, so gibt es eine bijektive
+  Korrespondenz zwischen Bündelkarten $(U,\Phi)$ und lokalen Rahmen
+  $\vbframe{\Psi}$ über $U$ in dem Sinne, dass es zu jeder Bündelkarte
+  einen lokalen Rahmen gibt und umgekehrt.
+\end{proposition}
+
+\subsection*{Konstruktion neuer Vektorbündel}
+
+
 
 %%% Local Variables: 
 %%% mode: latex
