@@ -1,41 +1,97 @@
 \section{Vektorbündel}
 \label{sec:faserbl}
 
+
+\subsection{Grundlegende Begriffsbildungen}
+
 \begin{definition}
-  Seien $E,M$ Mannigfaltigkeiten, $r\in\N$, $\K=\R,\C$ und $\pi\colon E \to M$ glatt. Man
-  nennt $(E,M,\pi)$ \emph{$\K$-Vektorbündel vom Rang $r$ über $M$}, falls
-  \begin{properties}
-  \item $\pi\colon E \to M$ eine surjektive Submersion ist und
-  \item für jeden Punkt $p\in M$ existiert eine Umgebung $U$ von $p$
-    und ein Diffeomorphismus $\Phi = (\Phi_1,\Phi_2) \colon \pi^{-1}(U) \to U\times \K^r$,
-    sodass $\Phi_1(e) = \pi(e)$ und $\Phi_p :=
-    \Phi_2|_{\pi^{-1}(\set{p})} \colon \pi^{-1}(\set{p}) \to \K^r$
-    ein linearer Isomorphismus ist.
-  \end{properties}
-  \textsc{Schreibweise:} Oft schreiben wir nur $\pi\colon
-  E\to M$ oder sogar nur $E$ für ein Vektorbündel. Der Rang eines
-  Bündels $E$ wird mit $\rnk E$ bezeichnet. Ist der Körper $\K$ aus
-  dem Kontext klar (oder egal), so lassen wwir in weg.
+  Seien $E,M$ Mannigfaltigkeiten. Ein Tripel $(\pi,E,M)$ heißt
+  \emph{glattes Bündel über $M$}, falls $\pi \colon E\to M$ eine
+  surjektive Submersion ist. Man nennt $E$ den \emph{Totalraum}, $M$
+  den \emph{Basisraum} und bezeichnet $E_p := \pi^{-1}(\set{p})$ als
+  die \emph{Faser von $E$ über $p$} ($p$ heißt auch \emph{Fußpunkt von
+    $E_p$)} und für $U\subset M$ offen bezeichnet man $E_U :=
+  \pi^{-1}(U)$ als das \emph{eingeschränkte Bündel über $U$}.
 
-  \textsc{Bezeichnungen:} Ist $\pi\colon E\to M$ ein Vektorbündel mit
-  $\rnk E = r$, so heißt $E$ \emph{Totalraum}, $M$ \emph{Basisraum} und
-  $\pi$ \emph{Bündelprojektion}. Ein Paar $(U,\Phi)$ wie in (ii)
-  heißt \emph{Bündelkarte}, $U$ heißt \emph{lokal trivialisierende
-    Umgebung} und $\Phi$ heißt \emph{lokale Trivialisierung}. Ein
-  \emph{Bündelatlas} ist eine Familie von Bündelkarten, sodass die
-  trivialisierenden Umgebungen ganz $M$ überdecken. Man sagt $E$
-  \emph{trivialisiert über $U$}, falls es eine Bündelkarte $(U,\Phi)$ gibt.
+  Ein \emph{Schnitt über $U$} ist eine glatte Abbildung $s\colon U \to
+  E$, sodass $\pi|_U\circ s = \id_U$. Ein \emph{(globaler) Schnitt}
+  ist ein Schnitt über $M$. Wir definieren
+  \begin{equation*}
+    \Gamma(E_U) := \set{ s\colon U \to E \mid s\text{ Schnitt über } U }
+  \end{equation*}
+  und $\Gamma(E) := \Gamma(E_M)$.
 
-  Ist $p$ in $M$ und $U\subset M$ offen, so bezeichnet $E_p :=
-  \pi^{-1}(\set{p})$ die \emph{Faser über  $p$} und $E_U :=
-  \pi^{-1}(U)$ das \emph{Teilbündel über $U$}.
+  \textsc{Notation:} Für ein Bündel $(\pi,E,M)$ schreiben wir oft auch
+  $\pi\colon E\to M$, $E\to M$ oder einfach nur $E$.
+\end{definition}
 
-  Ist $(U,\Phi)$ eine Bündelkarte, so bezeichnen $\pr_1,\pr_2\colon
-  U\times \K^r$ die kanonischen Projektionen auf die erste und zweite Komponente.
+\begin{definition}
+  Sei $F$ eine Mannigfaltigkeit, $\pi\colon E \to M$ ein Bündel
+  $U\subset M$ offen. Bezeichne $\pr_1\colon U\times F \to U, (u,f)
+  \mapsto u$ und $\pr_2\colon U\times F \to U, (u,f)
+  \mapsto f$.
+  Man sagt \emph{$E$ trivialisiert über $U$ mit Fasertyp $F$}, falls es
+  einen Diffeomorphismus $\Phi \colon E_U \to U\times F$ gibt, sodass $\pi
+  = \pr_1\circ \Phi$. Man nennt dann $(U,\Phi)$ eine
+  \emph{Bündelkarte} und $\Phi$ eine \emph{lokale
+    Trivialisierung}. Man nennt $\Phi^v := \pr_2\circ \Phi \colon E_U
+  \to F$ den \emph{Vektoranteil} der Trivialisierung.
+
+  Man sagt $E$ ist \emph{lokal trivial mit Fasertyp $F$}, falls es
+  eine offene Überdeckung $\set{U_i}_{i\in I}$ von $M$ gibt, sodass
+  $E$ für alle $i\in I$ über $U_i$ trivialisiert. Ist $\Phi_i \colon
+  E_{U_i}\to U_i\times F$ eine lokale Trivialisierung, so heißt
+  $\set{(U_i,\Phi_i)}$ \emph{Bündelatlas}. 
 \end{definition}
 
 \begin{proposition}
-  Sei $E\to M$ ein $\K$-Vektorbündel vom Rang $r$. Dann gilt $\dim E =
+  Sei $\pi \colon E \to M$ ein Bündel und $(U,\Phi)$ eine Bündelkarte
+  um $p$. Dann ist die Abbildung $\Phi_p \colon E_p \to F, \xi \mapsto
+  \Phi^v|_{E_p}(\xi)$ ein Diffeomorphismus.
+
+  Insbesondere ist also für zwei Bündelkarten  $(U,\Phi),(\tilde
+  U,\tilde \Phi)$ um $p$ die Abbildung
+  $\tau_p := \Phi_p\circ\tilde{\Phi_p}^{-1}$ ein Diffeomorphismus. 
+\end{proposition}
+
+\begin{definition}
+  Sei $\pi \colon E \to M$ ein lokal triviales Bündel mit Fasertyp $F$ und $(U,\Phi),(\tilde
+  U,\tilde \Phi)$ zwei Bündelkarten um $p$. Die Abbildung $\tau \colon
+  U \cap \tilde U \to \Diff(F), p \mapsto
+  \Phi_p\circ\tilde{\Phi_p}^{-1}$ heißt \emph{Übergangsfunktion von
+    $(U,\Phi)$ zu $(\tilde U,\tilde\Phi)$}. Ist
+  $\set{(U_i,\Phi_i)}_{i\in I}$ ein Bündelatlas, so bezeichnet
+  $g_{ij}$ die Übergangsfunktion von $(U_i,\Phi_i)$ zu $(U_j,\Phi_j)$.
+\end{definition}
+
+\begin{definition}
+  Sei $\K = \R$ oder $\K = \C$. Ein Bündel $\pi\colon E\to M$ heißt
+  \emph{$\K$-Vektorbündel vom Rang $r$}, falls $E$ lokal trivial mit
+  Fasertyp $\K^r$ ist und für jeden Bündelatlas $\set{(U_i,\Phi_i)}$
+  und jedes $p\in M$ gilt, dass für die Übergangsfunktion gilt, dass
+  $g_{ij}(p)\in\GL(\K^r)$. 
+
+  Man sagt auch \emph{reelles Vektorbündel} für $\K=\R$ und
+  \emph{komplexes Vektorbündel} für $\K=\C$. Ein Vektorbündel vom Rang
+  $1$ heißt auch \emph{Linienbündel}.
+\end{definition}
+
+\begin{proposition}
+  Ist $E\to M$ ein $\K$-Vektorbündel vom Rang $r$, so trägt jede Faser $E_p$ eine
+  natürliche Vektorraumstruktur, sodass $\Phi_p\colon E_p \to \K^r$
+  linear wird. Es ist also jede Faser $E_p$ ein $r$-dimensionaler $\K$-Vektorraum.
+\end{proposition}
+
+\begin{proposition}
+  Sei $E\to M$ ein lokal triviales Bündel mit Fasertyp $\K^r$. Dann
+  ist $E$ genau dann ein $\K$-Vektorbündel vom Rang $r$, falls jede
+  Faser $E_p$ die Struktur eines $r$-dimensionalen $\K$-Vektorraums
+  hat und für jede Bündelkarte $(U,\Phi)$ die Abbildung $\Phi_p$
+  linear ist.
+\end{proposition}
+
+\begin{proposition}
+  Ist $E\to M$ ein $\K$-Vektorbündel vom Rang $r$, so ist $\dim E =
   \dim M + \dim_\R\K\cdot r$.
 \end{proposition}
 
@@ -52,7 +108,7 @@
 
 \begin{definition}
   Seien $\pi_E\colon E\to M$ und $\pi_F\colon F \to N$ zwei
-  $\K$-Vektorbündel und $g\colon M\to N$ glatt. Eine Abbildung
+  $\K$-Vek torbündel und $g\colon M\to N$ glatt. Eine Abbildung
   $G\colon E\to F$ heißt \emph{Bündelmorphismus entlang $g$}, falls
   $g\circ\pi_E = \pi_F\circ G$ und $G_p := G|_{E_p} \colon E_p \to
   F_{g(p)}$ linear ist.
@@ -76,14 +132,60 @@
   globale Bündelkarte $(M,\Phi)$ gibt.
 \end{proposition}
 
+\subsection*{Rahmen und Schnitte}
+
 \begin{definition}
-  Sei $\pi\colon E\to M$ ein $\K$-Vektorbündel vom Rang $r$ und $(U_1,\Phi_1),
-  (U_2,\Phi_2)$ zwei Bündelkarten um $p\in M$. Dann heißt
-  \begin{equation*}
-    g_{12} \colon U_1\cap U_2 \to \GL(\K^r), p\mapsto \pr_2(\Phi_2\circ \Phi_1^{-1}(p,\cdot))
-  \end{equation*}
-  der \emph{Bündelübergang von $(U_1,\Phi_1)$ nach $(U_2,\Phi_2)$}.
+  Sei $E\to M$ ein Vektorbündel vom Rang $r$. Die Schnitte $s_1,\dots,
+  s_k$ über $U$ heißen \emph{linear unabhängig über $U$}, falls die
+  Vektoren $s_1(p),\dots,s_k(p)$ dies sind. Man nennt $\vbfram{\Psi} =
+  (\Psi_1,\dots,\Psi_r)$ \emph{(lokalen) Rahmen über $U$}, falls die
+  $\Psi_1,\dots, \Psi_r$ linear unabhängige Schnitte über $U$ sind,
+  also punktweise eine Basis bilden. Ein \emph{globaler Rahmen} ist
+  ein lokaler Rahmen über $M$. 
 \end{definition}
+
+\begin{proposition}
+  Sei $E\to M$ ein $\K$-Vektorbündel vom Rang $r$ und $(U,\Phi)$ eine Bündelkarte und bezeichne $e_1,\dots, e_r$ eine
+  Basis des $\K^r$. Definiert man $Psi_i(p) := \Phi^{-1}(p,e_i)$, so
+  ist $\vbframe{\Psi} = (\Psi_1,\dots,\Psi_r)$ ein Rahmen über
+  $U$. Man sagt dann, dass $\vbframe{\Psi}$ zu $(U,\Phi)$
+  \emph{assoziiert} ist.
+\end{proposition}
+
+\begin{proposition}
+  Sei $E\to M$ ein Vektorbündel und $\vbframe{\Psi}$ ein Rahmen über
+  $U$. Dann gibt es eine Bündelkarte $(U,\Phi)$, sodass $\vbfram{Psi}$
+  zu $(U,\Phi)$ assoziert ist.
+\end{proposition}
+
+\begin{proposition}
+  Ein Vektorbündel $E\to M$ ist genau dann trivial, wenn es einen
+  globalen Rahmen gibt.
+\end{proposition}
+
+\begin{proposition}
+  Sei $E\to M$ ein Vektorbündel. Ein Schnitt $s\in \Gamma(E)$ ist
+  genau dann glatt, wenn es zu jedem Rahmen $\vbframe{\Psi} =
+  (\Psi_1,\dots,\Psi_r)$ über einer Menge $U$ glatte Abbildungen $f_1,\dots, f_n\in
+  C^\infty(U)$ gibt, mit $s|_U = \sum_{i} f_i\Psi_i$.
+\end{proposition}
+
+\begin{proposition}
+  Für$s,t\in\Gamma(E)$ und $f\inC^\infty(M)$ wird durch $(fs + t)(p)
+  := f(p)s(p) + t(p)$ die Menge $\Gamma(E)$ zu einem lokal freien $C^\infty(M)$-Modul.
+\end{proposition}
+
+\begin{proposition}[TODO]
+  Sei $E\to M$ ein Vektorbündel, $\vbframe{\Psi}$ ein Rahmen über $U$
+  und $\vbframe{\Phi}$ ein Rahmen über $U'$. Ist $s\in\Gamma(E_{U\cap
+    U'})$ mit $s = \sum_i f_i \Psi_i = \sum_i \tilde{f}_i \Phi_i$, so gilt
+  \begin{equation*}
+    f_i(p) = \tau(p)\tilde{f}_i(p)
+  \end{equation*}
+  wobei $\tau$ die Bündelübergangsfunktion der zu den Rahmen gehörigen
+  lokalen Trivialisierungen bezeichnet.
+\end{proposition}
+
 
 \subsection*{Charakterisierung durch Kozykel}
 
@@ -137,41 +239,51 @@
   zu $z$ kohomolog ist.
 \end{satz}
 
-\subsection*{Rahmen und Schnitte}
-
-\begin{definition}
-  Sei $\pi \colon E\to M$ ein Vektorbündel vom Rang $r$. Eine
-  Abbildung $s\colon M \to E$ heißt \emph{rauher Schnitt in/von $E$}, falls
-  $\pi\circ s 0 \id$. Ein \emph{(glatter) Schnitt in/von $E$} ist ein
-  rauher Schnitt, der glatt ist. Die Menge aller glatten Schnitte wird
-  mit $\Gamma(E)$ bezeichnet. Man schreibt oft $s_p := s(p)$ für einen
-  Schnitt $s\in \Gamma(E)$. Ein \emph{lokaler Schnitt über $U\subset
-    M$} ist ein (globaler) Schnitt über $E_U$.
-
-  Man nennt Schnitte $s_1,\dots,s_n$ \emph{linear unabhängig}, falls
-  sie dies Punktweise sind. Ein \emph{(lokaler) Rahmen  über $U\subset
-    M$} $\vbframe{\Psi}
-  = (\Psi_1,\dots,\Psi_r)$ ist ein $r$-Tupel aus lokalen Schnitten
-  $\Psi_i \in \Gamma(E_U)$, sodass
-  $\vbframe{\Psi}_p = (\Psi_1(p),\dots,\Psi_r(p))$ für jedes $p\in U$
-  eine Basis von $E_p$ ist.
-\end{definition}
-
-\begin{proposition}
-  Für$s,t\in\Gamma(E)$ und $f\inC^\infty(M)$ wird durch $(fs + t)(p)
-  := f(p)s(p) + t(p)$ die Menge $\Gamma(E)$ zu einem lokal freien $C^\infty(M)$-Modul.
-\end{proposition}
-
-\begin{proposition}
-  Ist $E\to M$ ein Vektorbündel, so gibt es eine bijektive
-  Korrespondenz zwischen Bündelkarten $(U,\Phi)$ und lokalen Rahmen
-  $\vbframe{\Psi}$ über $U$ in dem Sinne, dass es zu jeder Bündelkarte
-  einen lokalen Rahmen gibt und umgekehrt.
-\end{proposition}
 
 \subsection*{Konstruktion neuer Vektorbündel}
 
+\begin{definition}
+  Sei $E\to M$ ein Vektorbündel vom Rang $r$. Ein $F\subset M$ heißt
+  \emph{Untervektorbündel von $E$ vom Rang $s$}, falls für alle $p\in
+  M$ gilt, dass $F_p := E_p \cap F$ ein $s$-dimensionaler
+  Vektorunterraum von $E_p$ ist und es für jedes $p\in M$ eine
+  (sogenannte \emph{angepasste}) Bündelkarten $(U,\Phi)$ um $p$ gibt,
+  sodass $\Phi(U\cap F) = U\times (\R^s\times\set{0}^{r-s})$
+\end{definition}
 
+\begin{proposition}
+  Sei $E\to M$ ein Vektorbündel. Ein $F\subset E$ ist genau dann ein
+  Untervektorbündel vom Rang $s$, falls jedes $p\in M$ eine offene
+  Umgebung $U$ besitzt, sodass es $s$ linear unabhängige
+  Schnitte $\Psi_1,\dots,\Psi_s$ über $U$ gibt, sodass $F_q = F\cap E_q$ die
+  lineare Hülle von $\Psi_1(q),\dots,\Psi_s(q)$ für alle $q\in U$ ist.
+\end{proposition}
+
+\begin{definition}
+  Sei $E\to M$ ein Vektorbündel vom Rang $r$ mit Bündelatlas
+  $\set{(U_i,\Phi_i)}_{i\in I}$ und Übergangskozykel
+  $\set{g_{ij}}$. Das \emph{duale Bündel $E^*\to M$} ist das durch den
+  Kozykel $\set{g_{ij}^*}$ (bis auf Isomorphie) bestimmte
+  Vektorbündel, wobei
+  \begin{equation*}
+    g_{ij}^*(p) := ((g_{ij}(p))^t)^{-1}
+  \end{equation*}
+\end{definition}
+
+\begin{definition}
+  Sei $E,\tilde E\to M$ Vektorbündel vom Rang $r$ und $\tilde r$ mit Bündelatlas
+  $\set{(U_i,\Phi_i)}_{i\in I}$, $\set{(U_i,\tilde\Phi_i)}_{i\in I}$ und Übergangskozykel
+  $\set{g_{ij}}$, $\set{\tilde g_{ij}}$. Das \emph{Summenbündel
+    $E\oplus \tilde E\to M$} ist das durch den
+  Kozykel $\set{g_{ij}^\oplus\colon U_i\cap U_j \to \GL(\K^{r+\tilde r}}$ (bis auf Isomorphie) bestimmte
+  Vektorbündel, wobei
+  \begin{equation*}
+    g_{ij}^\oplus(p)(x_1,\dots,x_r,y_1,\dots,y_{\tilde r} :=
+    (g_{ij}(p)(x_1,\dots,x_r},\tilde g_{ij}(y_1,\dots,y_{\tilde r}))
+  \end{equation*}
+\end{definition}
+
+Tensor
 
 %%% Local Variables: 
 %%% mode: latex
